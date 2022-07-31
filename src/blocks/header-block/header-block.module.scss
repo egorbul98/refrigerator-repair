@@ -1,0 +1,8 @@
+@import "../../styles/mixins/fonts.scss";
+@import "../../styles/variables/colors.scss";
+
+.title{
+    background: red;
+    
+    @include font-h1;
+}

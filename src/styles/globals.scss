@@ -1,0 +1,35 @@
+@import "./variables/colors.scss";
+@import "./mixins/fonts.scss";
+@import 'material-symbols';
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body,
+input,
+textarea {
+    @include text-18;
+    @include font-fam-sans;
+    color: $color-black;
+
+    font-feature-settings: none;
+    font-variant-ligatures: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    position: relative;
+}
+
+a {
+    transition: color 320ms cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.default-transition {
+    transition: all 320ms cubic-bezier(0.645, 0.045, 0.355, 1);
+}

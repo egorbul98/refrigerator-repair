@@ -1,12 +1,11 @@
 import React from 'react';
 import { HomeLayout } from './layouts/home-layout';
+import './styles/globals.scss';
 
-function App() {
+export function App() {
     return (
         <>
             <HomeLayout />
         </>
     );
 }
-
-export default App;

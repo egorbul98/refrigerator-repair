@@ -1,13 +1,15 @@
 import React from 'react';
-// @ts-ignore
-import styles from './header-block.module.css';
+// import styles from './header-block.module.css';
+import styles from './header-block.module.scss';
 
 interface Props {
     title: string;
 }
 
 export const HeaderBlock = (props: Props) => {
-    console.log(props);
-
-    return <div className={styles.title}>HeaderBlock</div>;
+    return (
+        <div className={styles.title}>
+            <div>HeaderBlock</div>
+        </div>
+    );
 };

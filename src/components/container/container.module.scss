@@ -1,8 +1,15 @@
-@import "../../styles/mixins/fonts.scss";
-@import "../../styles/variables/colors.scss";
+@import "../../styles/includes.scss";
 
-.title{
-    background: red;
-    
-    @include font-h1;
+.container{
+    max-width: 1440px;
+    padding: 0 64px;
+    margin: 0 auto;
+
+    @include screen-s-and-lesser {
+        padding: 0 32px;
+    }
+
+    @include screen-xs {
+        padding: 0 16px;
+    }
 }

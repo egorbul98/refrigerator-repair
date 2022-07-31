@@ -1,6 +1,5 @@
 import React from 'react';
 import { HeaderBlock } from '../../blocks/header-block/header-block';
-import { Container } from '../../components/container/container';
 import styles from './home-layout.module.scss';
 import cn from 'classnames';
 import { Link } from '../../components/link/link';
@@ -13,9 +12,7 @@ export const HomeLayout = () => {
             </aside>
 
             <main className={styles.content}>
-                <Container>
-                    <HeaderBlock />
-                </Container>
+                <HeaderBlock />
             </main>
         </div>
     );

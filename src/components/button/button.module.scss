@@ -1,0 +1,18 @@
+@import "../../styles/includes.scss";
+
+.button{
+   background: $color-blue;
+   cursor: pointer;
+   color: #fff;
+   border-radius: 8px;
+   padding: 18px 24px;
+   font-size: 16px;
+   line-height: 1;
+   border: none;
+   outline: none;
+   font-weight: 500;
+
+   &:hover{
+      background: $color-blue-hover;
+   }
+}

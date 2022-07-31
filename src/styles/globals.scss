@@ -1,5 +1,4 @@
-@import "./variables/colors.scss";
-@import "./mixins/fonts.scss";
+@import 'includes.scss';
 @import 'material-symbols';
 
 *{
@@ -26,9 +25,12 @@ body {
     position: relative;
 }
 
-a {
-    transition: all 0.2s linear;
+a, button {
+    @include font-fam-sans;
+    transition: all 0.18s ease-in-out;
+}
 
+a{
     &:hover{
         color: $color-blue;
     }

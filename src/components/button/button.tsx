@@ -1,9 +1,15 @@
 import React from 'react';
+import styles from './button.module.scss';
 
 interface Props {
-    variant?: 'default';
+    children?: React.ReactNode;
+    onClick?: (e: any) => void;
 }
 
-export const Button: React.FC<Props> = ({ variant }: Props) => {
-    return <div>{variant}</div>;
+export const Button: React.FC<Props> = ({ children, onClick }: Props) => {
+    return (
+        <button onClick={onClick} className={styles.button}>
+            {children}
+        </button>
+    );
 };

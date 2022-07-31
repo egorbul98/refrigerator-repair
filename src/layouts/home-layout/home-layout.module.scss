@@ -1,0 +1,45 @@
+@import "../../styles/mixins/fonts.scss";
+@import "../../styles/variables/colors.scss";
+
+
+$sidebar-width: 140px;
+
+
+.content{
+    width: 100%;
+    padding-left: $sidebar-width;
+}
+
+.sidebar{
+    height: 100%;
+    position: fixed;
+    background: $color-blue-light;
+    width: $sidebar-width;
+}
+
+.links{
+    .item{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        height: 108px;
+        padding: 0 10px;
+        font-weight: 500;
+        color: $color-black;
+
+        &:hover{
+            background: #fff;
+            background: $color-blue-light-hover;
+        }
+    }
+
+    .label{
+        margin-top: 10px;
+    }
+
+    .icon{
+        font-size: 32px;
+    }
+}

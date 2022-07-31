@@ -2,5 +2,7 @@
 @import "../../styles/variables/colors.scss";
 
 .title{
+    background: red;
+    
     @include font-h1;
 }

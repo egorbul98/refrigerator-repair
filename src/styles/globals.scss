@@ -28,6 +28,7 @@ body {
 a, button {
     @include font-fam-sans;
     transition: all 0.18s ease-in-out;
+    cursor: pointer;
 }
 
 a{

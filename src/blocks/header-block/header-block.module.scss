@@ -27,6 +27,7 @@
     padding-bottom: 10px;
     font-weight: 600;
     display: flex;
+    color: $color-black;
 
     .icon{
         display: block;
@@ -47,6 +48,7 @@
     .phone{
         display: flex;
         align-items: center;
+        font-weight: bold;
     }
 
     .iconPhone{

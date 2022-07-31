@@ -10,10 +10,10 @@ export const HeaderBlock = () => {
         <header className={styles.header}>
             <Container className={styles.container}>
                 <div className={styles.leftBlock}>
-                    <div className={styles.logo}>
+                    <Link className={styles.logo} href="/">
                         <span className={cn('material-symbols-outlined', styles.icon)}>kitchen</span>
                         <span>ПрофХолод</span>
-                    </div>
+                    </Link>
 
                     <div className={styles.contacts}>
                         <div className={styles.link}>

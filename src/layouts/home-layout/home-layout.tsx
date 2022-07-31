@@ -3,6 +3,7 @@ import { HeaderBlock } from '../../blocks/header-block/header-block';
 import styles from './home-layout.module.scss';
 import cn from 'classnames';
 import { Link } from '../../components/link/link';
+import { HomeBlock } from '../../blocks/home-block/home-block';
 
 export const HomeLayout = () => {
     return (
@@ -13,6 +14,7 @@ export const HomeLayout = () => {
 
             <main className={styles.content}>
                 <HeaderBlock />
+                <HomeBlock />
             </main>
         </div>
     );

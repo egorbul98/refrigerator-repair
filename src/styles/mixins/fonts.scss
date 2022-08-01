@@ -80,13 +80,14 @@
     }
 }
 
-@mixin font-h4 {
-    @include h4;
+@mixin font-h3 {
+    @include h3;
 
     @include screen-s-and-lesser {
-        @include h4-mob;
+        @include h3-mob;
     }
 }
+
 
 @mixin font-primary {
     @include text-32;

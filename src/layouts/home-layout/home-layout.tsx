@@ -4,19 +4,24 @@ import styles from './home-layout.module.scss';
 import cn from 'classnames';
 import { Link } from '../../components/link/link';
 import { HomeBlock } from '../../blocks/home-block/home-block';
+import { DealConsultationModal } from '../../components/deal-cinsultation-modal/deal-cinsultation-modal';
 
 export const HomeLayout = () => {
     return (
-        <div className={styles.container}>
-            <aside className={styles.sidebar}>
-                <NavigationLinks items={navLinks} />
-            </aside>
+        <>
+            <div className={styles.container}>
+                <aside className={styles.sidebar}>
+                    <NavigationLinks items={navLinks} />
+                </aside>
 
-            <main className={styles.content}>
-                <HeaderBlock />
-                <HomeBlock />
-            </main>
-        </div>
+                <main className={styles.content}>
+                    <HeaderBlock />
+                    <HomeBlock />
+                </main>
+            </div>
+
+            <DealConsultationModal />
+        </>
     );
 };
 

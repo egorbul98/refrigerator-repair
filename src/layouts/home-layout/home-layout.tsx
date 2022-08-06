@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { HeaderBlock } from '../../blocks/header-block/header-block';
 import styles from './home-layout.module.scss';
 import cn from 'classnames';
 import { Link } from '../../components/link/link';
 import { HomeBlock } from '../../blocks/home-block/home-block';
-import { DealConsultationModal } from '../../components/deal-cinsultation-modal/deal-cinsultation-modal';
+import { FeedbackFormModal } from '../../components/feedback-form/feedback-form-modal';
 
 export const HomeLayout = () => {
+    const [openModal, setOpenModal] = useState(false);
+
     return (
         <>
             <div className={styles.container}>
@@ -15,12 +17,16 @@ export const HomeLayout = () => {
                 </aside>
 
                 <main className={styles.content}>
-                    <HeaderBlock />
+                    <HeaderBlock
+                        onClickConsultation={() => {
+                            setOpenModal(true);
+                        }}
+                    />
                     <HomeBlock />
                 </main>
             </div>
 
-            <DealConsultationModal />
+            <FeedbackFormModal open={openModal} onClose={() => setOpenModal(false)} />
         </>
     );
 };

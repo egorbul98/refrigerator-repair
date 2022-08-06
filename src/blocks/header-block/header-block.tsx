@@ -5,7 +5,11 @@ import styles from './header-block.module.scss';
 import { Button } from '../../components/button/button';
 import { Link } from '../../components/link/link';
 
-export const HeaderBlock = () => {
+interface Props {
+    onClickConsultation: () => void;
+}
+
+export const HeaderBlock = ({ onClickConsultation }: Props) => {
     return (
         <header className={styles.header}>
             <Container className={styles.container}>
@@ -27,7 +31,7 @@ export const HeaderBlock = () => {
                 </div>
 
                 <div>
-                    <Button>Получить консультацию</Button>
+                    <Button onClick={onClickConsultation}>Получить консультацию</Button>
                 </div>
             </Container>
         </header>

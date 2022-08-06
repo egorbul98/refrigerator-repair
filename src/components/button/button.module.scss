@@ -1,13 +1,12 @@
 @import "../../styles/includes.scss";
 
 .button{
+   @include text-16;
    background: $color-blue;
    cursor: pointer;
    color: #fff;
    border-radius: 8px;
-   padding: 18px 24px;
-   font-size: 16px;
-   line-height: 1;
+   padding: 17px 24px;
    border: none;
    outline: none;
    font-weight: 500;
@@ -15,4 +14,8 @@
    &:hover{
       background: $color-blue-hover;
    }
+}
+
+.fullWidth{
+   width: 100%;
 }

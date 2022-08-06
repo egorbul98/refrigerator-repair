@@ -8,9 +8,7 @@
 }
 
 html,
-body,
-input,
-textarea {
+body{
     @include text-18;
     @include font-fam-sans;
     color: $color-black;
@@ -19,6 +17,11 @@ textarea {
     font-variant-ligatures: none;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+input, textarea{
+    @include text-16;
+    @include font-fam-sans;
 }
 
 body {

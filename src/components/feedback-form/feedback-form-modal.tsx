@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Modal } from '../modal/modal';
+import { FEEDBACK_FORM_DESCRIPTION } from './constants';
 import { FeedbackForm } from './feedback-form';
 
 interface Props {
@@ -25,12 +26,7 @@ export const FeedbackFormModal = ({ open: _open, onClose: _onClose }: Props) => 
 
     return (
         <>
-            <Modal
-                title="Вызов мастера"
-                description="Оставьте заявку и мы свяжемся с Вами в течение 15 минут"
-                open={open}
-                onClose={onClose}
-            >
+            <Modal title="Вызов мастера" description={FEEDBACK_FORM_DESCRIPTION} open={open} onClose={onClose}>
                 <FeedbackForm onSubmit={onSubmit} />
             </Modal>
         </>

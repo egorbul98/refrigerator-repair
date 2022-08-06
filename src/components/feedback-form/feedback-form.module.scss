@@ -7,3 +7,18 @@
         margin-bottom: 0;
     }
 }
+
+.consent{
+    margin-top: 8px;
+    @include text-14;
+    color: $color-black-300;
+}
+
+.errors{
+    color: $color-red;
+    font-weight: 500;
+
+    & > div:not(:last-child){
+        margin-bottom: 4px;
+    }
+}

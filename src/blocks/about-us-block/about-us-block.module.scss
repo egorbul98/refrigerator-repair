@@ -1,0 +1,39 @@
+@import "../../styles/includes.scss";
+
+
+.list{
+    display: flex;
+    margin: -8px;
+    flex-wrap: wrap;
+    padding-top: 32px;
+}
+
+.item{
+    width: 33.33%;
+    padding: 8px;
+
+    @include screen-m-and-lesser{
+        width: 50%;
+    }
+
+    @include screen-xs{
+        width: 100%;
+    }
+}
+
+.card{
+    background: $color-blue-light;
+    text-align: center;
+    padding: 24px;
+    // box-shadow: $box-shadow;
+    height: 100%;
+
+    .title{
+        margin-top: 16px;
+        font-weight: bold;
+    }
+
+    .description{
+        margin-top: 16px;
+    }
+}

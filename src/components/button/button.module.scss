@@ -19,3 +19,9 @@
 .fullWidth{
    width: 100%;
 }
+
+.fullWidthMobile{
+   @include screen-xs{
+      width: 100%;
+   }
+}

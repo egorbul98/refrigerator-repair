@@ -5,9 +5,15 @@ import cn from 'classnames';
 import { Link } from '../../components/link/link';
 import { HomeBlock } from '../../blocks/home-block/home-block';
 import { FeedbackFormModal } from '../../components/feedback-form/feedback-form-modal';
+import { AboutUsBlock } from '../../blocks/about-us-block/about-us-block';
+import { ServicesBlock } from '../../blocks/services-block/services-block';
 
 export const HomeLayout = () => {
     const [openModal, setOpenModal] = useState(false);
+
+    const openModalHandler = () => {
+        setOpenModal(true);
+    };
 
     return (
         <>
@@ -17,12 +23,10 @@ export const HomeLayout = () => {
                 </aside>
 
                 <main className={styles.content}>
-                    <HeaderBlock
-                        onClickConsultation={() => {
-                            setOpenModal(true);
-                        }}
-                    />
+                    <HeaderBlock onClickConsultation={openModalHandler} />
                     <HomeBlock />
+                    <AboutUsBlock />
+                    <ServicesBlock onClickItem={openModalHandler} />
                 </main>
             </div>
 
@@ -33,7 +37,7 @@ export const HomeLayout = () => {
 
 const navLinks: NavLinkProp[] = [
     { label: 'О компании', icon: 'kitchen', href: '#about' },
-    { label: 'Стоимость ремонта', icon: 'tools_wrench', href: '#about' },
+    { label: 'Стоимость ремонта', icon: 'tools_wrench', href: '#services' },
     { label: 'Бренды', icon: 'kitchen', href: '#about' },
     { label: 'Сертификаты и партнеры', icon: 'verified', href: '#about' },
     { label: 'Вопросы', icon: 'quiz', href: '#about' },

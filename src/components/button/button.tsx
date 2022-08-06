@@ -5,12 +5,16 @@ import cn from 'classnames';
 interface Props {
     children?: React.ReactNode;
     fullWidth?: boolean;
+    fullWidthMobile?: boolean;
     onClick?: (e: any) => void;
 }
 
-export const Button: React.FC<Props> = ({ children, onClick, fullWidth }: Props) => {
+export const Button: React.FC<Props> = ({ children, onClick, fullWidth, fullWidthMobile }: Props) => {
     return (
-        <button onClick={onClick} className={cn(styles.button, { [styles.fullWidth]: fullWidth })}>
+        <button
+            onClick={onClick}
+            className={cn(styles.button, { [styles.fullWidth]: fullWidth, [styles.fullWidthMobile]: fullWidthMobile })}
+        >
             <div> {children}</div>
         </button>
     );

@@ -14,6 +14,7 @@ $sidebar-width: 140px;
     position: fixed;
     background: $color-blue-light;
     width: $sidebar-width;
+    box-shadow: $box-shadow;
 }
 
 .links{
@@ -31,10 +32,16 @@ $sidebar-width: 140px;
         &:hover{
             background: #fff;
             background: $color-blue-light-hover;
+
+            .icon{
+                font-size: 38px;
+                transition: $transition;
+            }
         }
     }
 
     .label{
+        transition: $transition;
         margin-top: 10px;
     }
 

@@ -5,11 +5,6 @@
     display: flex;
     margin: -8px;
     flex-wrap: wrap;
-    padding-top: 40px;
-
-    @include screen-s-and-lesser{
-        padding-top: 32px;
-    }
 }
 
 .item{

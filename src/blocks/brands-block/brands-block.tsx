@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import cn from 'classnames';
 import styles from './brands-block.module.scss';
 import { BlockLayout } from '../../components/block-layout/block-layout';
 import { Button } from '../../components/button/button';

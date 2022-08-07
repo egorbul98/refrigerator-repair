@@ -37,7 +37,8 @@ export const BlockLayout: React.FC<Props> = ({
             <Container className={cn(styles.innerContainer, classNames?.innerContainer)}>
                 {title && <h2 className={styles.title}>{title}</h2>}
                 {description && <div className={styles.description}>{description}</div>}
-                <div>{children}</div>
+
+                <div className={styles.content}>{children}</div>
             </Container>
         </section>
     );

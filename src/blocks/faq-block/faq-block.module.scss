@@ -3,11 +3,6 @@
 
 .list{
     margin: -8px;
-    padding-top: 40px;
-
-    @include screen-s-and-lesser{
-        padding-top: 32px;
-    }
 }
 
 .item{
@@ -18,6 +13,12 @@
 .faqItem{
     border: 1px solid $color-blue-light;
     border-top: none;
+
+    &.expaned{
+        .icon{
+            transform: rotate(-180deg) translateY(-4px);
+        }
+    }
 }
 
 .title{
@@ -26,15 +27,25 @@
     color: $color-black;
     @include text-24;
     cursor: pointer;
-    padding: 18px;
+    padding: 24px 18px;
     width: 100%;
     display: block;
     text-align: left;
     font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
 
     &:hover{
         background-color: $color-blue-light-hover;
     }
+}
+
+.icon{
+    font-size: 34px !important;
+    line-height: 24px !important;
+    padding-top: 4px;
+    transition: $transition;
 }
 
 .content{

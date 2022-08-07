@@ -10,11 +10,19 @@
    margin-top: 16px;
 }
 
+.content{
+   margin-top: 40px;
+
+   @include screen-s-and-lesser{
+      margin-top: 32px;
+   }
+}
+
 .paddingTop{
    padding-top: 60px;
 
    @include screen-s-and-lesser{
-      padding-top: 32px;
+      padding-top: 40px;
    }
 }
 
@@ -22,7 +30,7 @@
    padding-bottom: 60px;
 
    @include screen-s-and-lesser{
-      padding-bottom: 32px;
+      padding-bottom: 40px;
    }
 }
 

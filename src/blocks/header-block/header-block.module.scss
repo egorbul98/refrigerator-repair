@@ -1,5 +1,4 @@
-@import "../../styles/mixins/fonts.scss";
-@import "../../styles/variables/colors.scss";
+@import "../../styles/includes.scss";
 
 .header{
     height: 124px;
@@ -8,6 +7,7 @@
     top: 0;
     z-index: 2;
     background: #fff;
+    box-shadow: $box-shadow;
 }
 
 .container{

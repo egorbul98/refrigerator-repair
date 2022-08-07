@@ -1,9 +1,7 @@
 import React from 'react';
-import cn from 'classnames';
 import styles from './faq-block.module.scss';
 import { BlockLayout } from '../../components/block-layout/block-layout';
-import { Button } from '../../components/button/button';
-
+import cn from 'classnames';
 import useCollapse from 'react-collapsed';
 
 const listData = [
@@ -61,10 +59,11 @@ interface FaqItemProps {
 const FaqItem = ({ content, title }: FaqItemProps) => {
     const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
     return (
-        <div className={styles.faqItem}>
+        <div className={cn(styles.faqItem, { [styles.expaned]: isExpanded })}>
             <button {...getToggleProps()} className={styles.title}>
                 {isExpanded ? '' : ''}
-                {title}
+                <span>{title}</span>
+                <span className={cn(styles.icon, 'material-symbols-outlined')}>expand_less</span>
             </button>
             <div {...getCollapseProps()} className={styles.content}>
                 {content}

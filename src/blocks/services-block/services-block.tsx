@@ -1,8 +1,6 @@
 import React from 'react';
-import cn from 'classnames';
 import styles from './services-block.module.scss';
 import { BlockLayout } from '../../components/block-layout/block-layout';
-import backgroundImage from '../../assets/images/services-background.png';
 import { Button } from '../../components/button/button';
 
 const listData = [

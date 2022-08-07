@@ -1,8 +1,6 @@
 import React from 'react';
-import cn from 'classnames';
 import styles from './about-us-block.module.scss';
 import { BlockLayout } from '../../components/block-layout/block-layout';
-import { createAdd } from 'typescript';
 
 const listData = [
     {

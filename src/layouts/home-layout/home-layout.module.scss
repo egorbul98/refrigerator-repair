@@ -15,6 +15,7 @@ $sidebar-width: 140px;
     background: $color-blue-light;
     width: $sidebar-width;
     box-shadow: $box-shadow;
+    z-index: 3;
 }
 
 .links{

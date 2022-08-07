@@ -7,13 +7,23 @@ interface Props {
     fullWidth?: boolean;
     fullWidthMobile?: boolean;
     onClick?: (e: any) => void;
+    variant?: 'primary' | 'secondary';
 }
 
-export const Button: React.FC<Props> = ({ children, onClick, fullWidth, fullWidthMobile }: Props) => {
+export const Button: React.FC<Props> = ({
+    children,
+    onClick,
+    fullWidth,
+    fullWidthMobile,
+    variant = 'primary',
+}: Props) => {
     return (
         <button
             onClick={onClick}
-            className={cn(styles.button, { [styles.fullWidth]: fullWidth, [styles.fullWidthMobile]: fullWidthMobile })}
+            className={cn(styles.button, styles[`${variant}`], {
+                [styles.fullWidth]: fullWidth,
+                [styles.fullWidthMobile]: fullWidthMobile,
+            })}
         >
             <div> {children}</div>
         </button>

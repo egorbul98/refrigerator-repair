@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './services-block.module.scss';
 import { BlockLayout } from '../../components/block-layout/block-layout';
-import { Button } from '../../components/button/button';
 
 const listData = [
     {
@@ -75,11 +74,11 @@ export const ServicesBlock = ({ onClickItem }: Props) => {
                 })}
             </div>
 
-            <div className={styles.button}>
-                <Button onClick={onClickItem} fullWidthMobile>
+            {/* <div className={styles.button}>
+                <Button onClick={onClickItem} fullWidth>
                     Другая неисправность
                 </Button>
-            </div>
+            </div> */}
         </BlockLayout>
     );
 };

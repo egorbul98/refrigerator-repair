@@ -11,6 +11,7 @@ import { BrandsBlock } from '../../blocks/brands-block/brands-block';
 import { FaqBlock } from '../../blocks/faq-block/faq-block';
 import { CertificatesBlock } from '../../blocks/certificates-block/certificates-block';
 import { ReviewsBlock } from '../../blocks/reviews-block/reviews-block';
+import { BannerBlock } from '../../blocks/banner-block/banner-block';
 
 export const HomeLayout = () => {
     const [openModal, setOpenModal] = useState(false);
@@ -31,8 +32,10 @@ export const HomeLayout = () => {
                     <HomeBlock />
                     <AboutUsBlock />
                     <ServicesBlock onClickItem={openModalHandler} />
+                    <BannerBlock onClickButton={openModalHandler} />
                     <BrandsBlock />
                     <CertificatesBlock />
+                    <BannerBlock onClickButton={openModalHandler} />
                     <FaqBlock />
                     <ReviewsBlock />
                 </main>

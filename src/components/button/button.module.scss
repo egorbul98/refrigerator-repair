@@ -2,7 +2,6 @@
 
 .button{
    @include text-16;
-   background: $color-blue;
    cursor: pointer;
    color: #fff;
    border-radius: 8px;
@@ -11,8 +10,21 @@
    outline: none;
    font-weight: 500;
 
-   &:hover{
-      background: $color-blue-hover;
+   &.primary{
+      background: $color-blue;
+
+      &:hover{
+         background: $color-blue-hover;
+      }
+   }
+
+   &.secondary{
+      color: $color-black;
+      background: $color-blue-light;
+
+      &:hover{
+         background: $color-blue-light-hover;
+      }
    }
 }
 

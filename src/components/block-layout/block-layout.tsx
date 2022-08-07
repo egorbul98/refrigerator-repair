@@ -14,6 +14,7 @@ interface Props {
     paddingBottom?: boolean;
     backgroundColor?: Colors;
     id?: string;
+    contentWithoutPaddings?: boolean;
 }
 
 export const BlockLayout: React.FC<Props> = ({
@@ -25,12 +26,14 @@ export const BlockLayout: React.FC<Props> = ({
     paddingTop,
     backgroundColor = 'white',
     id,
+    contentWithoutPaddings,
 }: Props) => {
     return (
         <section
             className={cn(styles.container, classNames?.container, styles[`background-${backgroundColor}`], {
                 [styles.paddingBottom]: paddingBottom,
                 [styles.paddingTop]: paddingTop,
+                [styles.contentWithoutPaddings]: contentWithoutPaddings,
             })}
             id={id}
         >

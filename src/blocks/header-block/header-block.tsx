@@ -4,6 +4,7 @@ import cn from 'classnames';
 import styles from './header-block.module.scss';
 import { Button } from '../../components/button/button';
 import { Link } from '../../components/link/link';
+import { MASTER_PHONE } from '../../components/feedback-form/constants';
 
 interface Props {
     onClickConsultation: () => void;
@@ -23,7 +24,7 @@ export const HeaderBlock = ({ onClickConsultation }: Props) => {
                         <div className={styles.link}>
                             <Link className={styles.phone} href="tel:+7 (800) 555 35 35">
                                 <span className={cn(styles.iconPhone, 'material-symbols-outlined')}>call</span>
-                                +7&nbsp;(800)&nbsp;555&nbsp;35&nbsp;35
+                                {MASTER_PHONE}
                             </Link>
                             <div className={styles.capture}>8:00 — 21:00 без выходных</div>
                         </div>

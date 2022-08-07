@@ -37,7 +37,7 @@ const listData = [
 
 export const FaqBlock = () => {
     return (
-        <BlockLayout title="Часто задаваемые вопросы" id="faq" paddingBottom>
+        <BlockLayout title="Часто задаваемые вопросы" id="faq" paddingBottom paddingTop>
             <div className={styles.list}>
                 {listData.map((item, i) => {
                     return (

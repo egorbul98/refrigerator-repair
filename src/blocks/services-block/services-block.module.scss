@@ -82,4 +82,9 @@
 
 .button{
     margin-top: 32px;
+    max-width: 300px;
+
+    @include screen-xs{
+        max-width: 100%;
+    }
 }

@@ -6,7 +6,7 @@ import { Slider } from '../../components/slider/slider';
 
 export const CertificatesBlock = () => {
     return (
-        <BlockLayout title="Сертификаты и партнеры" id="certificates" paddingBottom paddingTop>
+        <BlockLayout title="Сертификаты и партнеры" id="certificates" paddingBottom>
             <Slider
                 slides={certificatesImages.map((item, i) => {
                     return (

@@ -20,8 +20,17 @@
 
 .content{
     margin-top: 32px;
+
+    @include screen-m-and-lesser{
+        margin-top: 16px;
+    }
 }
 
 .date{
     margin-top: 32px;
+}
+
+.rating{
+    margin-top: 16px;
+    color: gold;
 }

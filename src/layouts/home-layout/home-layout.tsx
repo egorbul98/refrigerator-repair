@@ -10,6 +10,7 @@ import { ServicesBlock } from '../../blocks/services-block/services-block';
 import { BrandsBlock } from '../../blocks/brands-block/brands-block';
 import { FaqBlock } from '../../blocks/faq-block/faq-block';
 import { CertificatesBlock } from '../../blocks/certificates-block/certificates-block';
+import { ReviewsBlock } from '../../blocks/reviews-block/reviews-block';
 
 export const HomeLayout = () => {
     const [openModal, setOpenModal] = useState(false);
@@ -33,6 +34,7 @@ export const HomeLayout = () => {
                     <BrandsBlock />
                     <CertificatesBlock />
                     <FaqBlock />
+                    <ReviewsBlock />
                 </main>
             </div>
 

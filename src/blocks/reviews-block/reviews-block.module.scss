@@ -1,0 +1,27 @@
+@import "../../styles/includes.scss";
+
+
+.navigation{
+    margin-bottom: 32px;
+
+    @include screen-m-and-lesser{
+        margin-bottom: 24px;
+    }
+}
+
+.card{
+    background: #fff;
+    padding: 24px;
+}
+
+.name{
+    @include text-24;
+}
+
+.content{
+    margin-top: 32px;
+}
+
+.date{
+    margin-top: 32px;
+}

@@ -7,6 +7,7 @@ import { HomeBlock } from '../../blocks/home-block/home-block';
 import { FeedbackFormModal } from '../../components/feedback-form/feedback-form-modal';
 import { AboutUsBlock } from '../../blocks/about-us-block/about-us-block';
 import { ServicesBlock } from '../../blocks/services-block/services-block';
+import { BrandsBlock } from '../../blocks/brands-block/brands-block';
 
 export const HomeLayout = () => {
     const [openModal, setOpenModal] = useState(false);
@@ -27,6 +28,7 @@ export const HomeLayout = () => {
                     <HomeBlock />
                     <AboutUsBlock />
                     <ServicesBlock onClickItem={openModalHandler} />
+                    <BrandsBlock />
                 </main>
             </div>
 

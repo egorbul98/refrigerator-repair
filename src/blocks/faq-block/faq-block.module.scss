@@ -1,0 +1,42 @@
+@import "../../styles/includes.scss";
+
+
+.list{
+    margin: -8px;
+    padding-top: 40px;
+
+    @include screen-s-and-lesser{
+        padding-top: 32px;
+    }
+}
+
+.item{
+   width: 100%;
+   padding: 8px;
+}
+
+.faqItem{
+    border: 1px solid $color-blue-light;
+    border-top: none;
+}
+
+.title{
+    border: none;
+    background-color: $color-blue-light;
+    color: $color-black;
+    @include text-24;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    display: block;
+    text-align: left;
+    font-weight: 500;
+
+    &:hover{
+        background-color: $color-blue-light-hover;
+    }
+}
+
+.content{
+    padding: 18px;
+}

@@ -9,14 +9,28 @@
 }
 
 .item{
-    width: 25%;
+    width: 20%;
     padding: 8px;
 
     @include screen-m-and-lesser{
-        width: 50%;
+        width: 33.33%;
     }
 
     @include screen-xs{
         width: 100%;
     }
+}
+
+.imageWrap{
+    img{
+        width: 100%;
+        object-fit: contain;
+    }
+}
+
+.button{
+    max-width: 300px;
+    width: 100%;
+    margin: 32px auto 0;
+    display: block;
 }

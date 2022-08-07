@@ -65,8 +65,8 @@ const FaqItem = ({ content, title }: FaqItemProps) => {
                 <span>{title}</span>
                 <span className={cn(styles.icon, 'material-symbols-outlined')}>expand_less</span>
             </button>
-            <div {...getCollapseProps()} className={styles.content}>
-                {content}
+            <div {...getCollapseProps()}>
+                <div className={styles.content}>{content}</div>
             </div>
         </div>
     );

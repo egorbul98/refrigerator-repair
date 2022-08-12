@@ -12,6 +12,7 @@ import { FaqBlock } from '../../blocks/faq-block/faq-block';
 import { CertificatesBlock } from '../../blocks/certificates-block/certificates-block';
 import { ReviewsBlock } from '../../blocks/reviews-block/reviews-block';
 import { BannerBlock } from '../../blocks/banner-block/banner-block';
+import { SuccessModal } from '../../components/success-modal/success-modal';
 
 export const HomeLayout = () => {
     const [openModal, setOpenModal] = useState(false);
@@ -41,7 +42,30 @@ export const HomeLayout = () => {
                 </main>
             </div>
 
-            <FeedbackFormModal open={openModal} onClose={() => setOpenModal(false)} />
+            <FeedbackLogic onClose={() => setOpenModal(false)} openModal={openModal} />
+        </>
+    );
+};
+
+const FeedbackLogic = ({ openModal, onClose: _onClose }: { openModal: boolean; onClose: () => void }) => {
+    const [openSuccessModal, setOpenSuccessModal] = useState(false);
+
+    const onSubmitFeedbackModal = () => {
+        setOpenSuccessModal(true);
+    };
+
+    const onCloseFeedbackModal = () => {
+        _onClose();
+    };
+
+    const onCloseSuccessModal = () => {
+        setOpenSuccessModal(false);
+    };
+
+    return (
+        <>
+            <FeedbackFormModal open={openModal} onClose={onCloseFeedbackModal} onSubmit={onSubmitFeedbackModal} />
+            <SuccessModal open={openSuccessModal} onClose={onCloseSuccessModal} />
         </>
     );
 };

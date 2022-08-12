@@ -4,10 +4,10 @@ import cn from 'classnames';
 
 interface Props {
     title?: string;
-    description?: string;
+    description?: string | React.ReactNode;
     open: boolean;
     onClose: () => void;
-    children: React.ReactNode;
+    children?: React.ReactNode;
 }
 
 export const Modal = ({ children, title, description, open, onClose: _onClose }: Props) => {

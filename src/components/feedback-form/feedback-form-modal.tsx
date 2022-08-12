@@ -6,9 +6,10 @@ import { FeedbackForm } from './feedback-form';
 interface Props {
     open: boolean;
     onClose: () => void;
+    onSubmit?: () => void;
 }
 
-export const FeedbackFormModal = ({ open: _open, onClose: _onClose }: Props) => {
+export const FeedbackFormModal = ({ open: _open, onClose: _onClose, onSubmit: _onSubmit }: Props) => {
     const [open, setOpen] = useState(_open);
 
     useEffect(() => {
@@ -21,6 +22,7 @@ export const FeedbackFormModal = ({ open: _open, onClose: _onClose }: Props) => 
     };
 
     const onSubmit = () => {
+        _onSubmit?.();
         onClose();
     };
 

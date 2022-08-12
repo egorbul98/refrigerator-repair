@@ -5,6 +5,10 @@
     padding: 0 64px;
     margin: 0 auto;
 
+    @include screen-m-and-lesser {
+        padding: 0 48px;
+    }
+
     @include screen-s-and-lesser {
         padding: 0 32px;
     }

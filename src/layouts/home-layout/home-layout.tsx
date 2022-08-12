@@ -13,23 +13,37 @@ import { CertificatesBlock } from '../../blocks/certificates-block/certificates-
 import { ReviewsBlock } from '../../blocks/reviews-block/reviews-block';
 import { BannerBlock } from '../../blocks/banner-block/banner-block';
 import { SuccessModal } from '../../components/success-modal/success-modal';
+import { useBodyHidden } from '../../utils/use-body-hidden';
+import { Contacts } from '../../components/contacts/contacts';
+import { Logo } from '../../components/logo/logo';
 
 export const HomeLayout = () => {
     const [openModal, setOpenModal] = useState(false);
+    const [openMenu, setOpenMenu] = useState(false);
 
     const openModalHandler = () => {
         setOpenModal(true);
     };
 
+    const toggleMenuHandler = () => {
+        setOpenMenu(!openMenu);
+    };
+
+    const closeMenuHandler = () => {
+        setOpenMenu(false);
+    };
+
     return (
         <>
             <div className={styles.container}>
-                <aside className={styles.sidebar}>
-                    <NavigationLinks items={navLinks} />
-                </aside>
+                <Sidebar openMenu={openMenu} closeMenuHandler={closeMenuHandler} />
 
                 <main className={styles.content}>
-                    <HeaderBlock onClickConsultation={openModalHandler} />
+                    <HeaderBlock
+                        onClickConsultation={openModalHandler}
+                        toggleMenuHandler={toggleMenuHandler}
+                        openMenu={openMenu}
+                    />
                     <HomeBlock />
                     <AboutUsBlock />
                     <ServicesBlock onClickItem={openModalHandler} />
@@ -47,10 +61,25 @@ export const HomeLayout = () => {
     );
 };
 
+const Sidebar = ({ openMenu, closeMenuHandler }: { openMenu: boolean; closeMenuHandler: () => void }) => {
+    useBodyHidden(openMenu);
+    return (
+        <aside className={cn(styles.sidebar, { [styles.openMenu]: openMenu })}>
+            <div className={styles.sidebarLogo}>
+                <Logo />
+            </div>
+            <NavigationLinks items={navLinks} onClickItem={closeMenuHandler} />
+            <div className={styles.sidebarContacts}>
+                <Contacts />
+            </div>
+        </aside>
+    );
+};
+
 const FeedbackLogic = ({ openModal, onClose: _onClose }: { openModal: boolean; onClose: () => void }) => {
     const [openSuccessModal, setOpenSuccessModal] = useState(false);
 
-    const onSubmitFeedbackModal = () => {
+    const onSubmit = () => {
         setOpenSuccessModal(true);
     };
 
@@ -64,7 +93,7 @@ const FeedbackLogic = ({ openModal, onClose: _onClose }: { openModal: boolean; o
 
     return (
         <>
-            <FeedbackFormModal open={openModal} onClose={onCloseFeedbackModal} onSubmit={onSubmitFeedbackModal} />
+            <FeedbackFormModal open={openModal} onClose={onCloseFeedbackModal} onSubmit={onSubmit} />
             <SuccessModal open={openSuccessModal} onClose={onCloseSuccessModal} />
         </>
     );
@@ -86,12 +115,12 @@ interface NavLinkProp {
     icon: string;
 }
 
-const NavigationLinks = ({ items }: { items: NavLinkProp[] }) => {
+const NavigationLinks = ({ items, onClickItem }: { items: NavLinkProp[]; onClickItem: (e?: any) => void }) => {
     return (
         <nav className={styles.links}>
             {items.map((item) => {
                 return (
-                    <Link className={styles.item} key={item.label} href={item.href}>
+                    <Link className={styles.item} key={item.label} href={item.href} onClick={onClickItem}>
                         <div className={cn('material-symbols-outlined', styles.icon)}>{item.icon}</div>
                         <div className={styles.label}>{item.label}</div>
                     </Link>

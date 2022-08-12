@@ -2,12 +2,10 @@
 
 
 $sidebar-width: 140px;
+$sidebar-width-m: 122px;
 
 
-.content{
-    width: 100%;
-    padding-left: $sidebar-width;
-}
+
 
 .sidebar{
     height: 100%;
@@ -16,9 +14,36 @@ $sidebar-width: 140px;
     width: $sidebar-width;
     box-shadow: $box-shadow;
     z-index: 3;
+
+    @include screen-m-and-lesser{
+        width: $sidebar-width-m;
+    }
+
+    @include screen-s-and-lesser{
+        position: fixed;
+        right: 100%;
+        top: 80px;
+        width: 100%;
+        height: calc(100vh - 80px);
+        transition: all 0.3s;
+        overflow: auto;
+        padding-bottom: 40px;
+
+        &.openMenu{
+            right: 0;
+        }
+    }
 }
 
 .links{
+    @include screen-s-and-lesser{
+       margin-top: 32px;
+    }
+
+    @include screen-xs{
+       margin-top: 12px;
+    }
+
     .item{
         display: flex;
         flex-direction: column;
@@ -29,6 +54,25 @@ $sidebar-width: 140px;
         padding: 0 10px;
         font-weight: 500;
         color: $color-black;
+
+        @include screen-m-and-lesser{
+            height: 100px;
+        }
+
+        @include screen-s-and-lesser{
+            padding-left: 0;
+            height: auto;
+            padding-top: 16px;
+            padding-bottom: 16px;
+            padding-left: 32px;
+            flex-direction: row;
+            justify-content: flex-start;
+        }
+
+
+        @include screen-xs{
+            padding-left: 16px;
+        }
 
         &:hover{
             background: #fff;
@@ -44,9 +88,66 @@ $sidebar-width: 140px;
     .label{
         transition: $transition;
         margin-top: 10px;
+
+        @include screen-m-and-lesser{
+            margin-top: 8px;
+            @include text-16;
+        }
+
+        @include screen-s-and-lesser{
+            margin-top: 0;
+            @include text-24;
+        }
+
+        @include screen-xs{
+            @include text-18;
+        }
     }
 
     .icon{
         font-size: 32px;
+
+        @include screen-s-and-lesser{
+            margin-right: 16px;
+        }
+
+        @media screen and (max-width: 450px) {
+            display: none;
+        }
     }
 }
+
+.sidebarContacts{
+    display: none;
+    margin-top: 16px;
+    padding-left: 16px;
+    
+    @media screen and (max-width: 710px){
+        display: block;
+    }
+}
+
+.sidebarLogo{
+    display: none;
+    margin-top: 16px;
+    padding-left: 16px;
+    
+    @media screen and (max-width: 450px) {
+        display: block;
+    }
+}
+
+
+.content{
+    width: 100%;
+    padding-left: $sidebar-width;
+
+    @include screen-m-and-lesser{
+        padding-left: $sidebar-width-m;
+    }
+
+    @include screen-s-and-lesser{
+        padding-left: 0;
+    }
+}
+

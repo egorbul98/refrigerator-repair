@@ -36,7 +36,7 @@ export const HomeBlock = () => {
             </div>
             <Container className={styles.innerContainer}>
                 <div className={styles.top}>
-                    <h1 className={styles.title}>Профессиональный и&nbsp;качественный ремонт&nbsp;холодильников</h1>
+                    <h1 className={styles.title}>Профессиональный и&nbsp;качественный ремонт холодильников</h1>
                     <div className={styles.subtitle}>
                         Выезд на&nbsp;дом в&nbsp;Москве и&nbsp;области в&nbsp;день обращения!
                     </div>

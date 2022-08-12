@@ -4,35 +4,37 @@ import cn from 'classnames';
 import styles from './header-block.module.scss';
 import { Button } from '../../components/button/button';
 import { Link } from '../../components/link/link';
-import { MASTER_PHONE } from '../../components/feedback-form/constants';
+import { MenuButton } from '../../components/menu-button/menu-button';
+import { Contacts } from '../../components/contacts/contacts';
+import { Logo } from '../../components/logo/logo';
 
 interface Props {
     onClickConsultation: () => void;
+    openMenu: boolean;
+    toggleMenuHandler: () => void;
 }
 
-export const HeaderBlock = ({ onClickConsultation }: Props) => {
+export const HeaderBlock = ({ onClickConsultation, openMenu, toggleMenuHandler }: Props) => {
     return (
         <header className={styles.header}>
             <Container className={styles.container}>
                 <div className={styles.leftBlock}>
-                    <Link className={styles.logo} href="/">
-                        <span className={cn('material-symbols-outlined', styles.icon)}>kitchen</span>
-                        <span>ПрофХолод</span>
-                    </Link>
+                    <MenuButton onClick={toggleMenuHandler} open={openMenu} className={styles.mobile} />
+
+                    <div className={styles.logo}>
+                        <Logo />
+                    </div>
 
                     <div className={styles.contacts}>
-                        <div className={styles.link}>
-                            <Link className={styles.phone} href="tel:+7 (800) 555 35 35">
-                                <span className={cn(styles.iconPhone, 'material-symbols-outlined')}>call</span>
-                                {MASTER_PHONE}
-                            </Link>
-                            <div className={styles.capture}>8:00 — 21:00 без выходных</div>
-                        </div>
+                        <Contacts />
                     </div>
                 </div>
 
                 <div>
-                    <Button onClick={onClickConsultation}>Получить консультацию</Button>
+                    <Button onClick={onClickConsultation}>
+                        <span className={styles.desktop}>Получить консультацию</span>
+                        <span className={styles.mobile}>Консультация</span>
+                    </Button>
                 </div>
             </Container>
         </header>

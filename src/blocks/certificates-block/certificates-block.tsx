@@ -15,7 +15,7 @@ export const CertificatesBlock = () => {
                         </div>
                     );
                 })}
-                classNames={{ swiper: styles.swiper }}
+                classNames={{ swiper: styles.swiper, navigation: styles.navigation }}
             />
         </BlockLayout>
     );

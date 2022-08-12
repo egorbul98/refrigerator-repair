@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './modal.module.scss';
 import cn from 'classnames';
+import { useBodyHidden } from '../../utils/use-body-hidden';
 
 interface Props {
     title?: string;
@@ -11,6 +12,8 @@ interface Props {
 }
 
 export const Modal = ({ children, title, description, open, onClose: _onClose }: Props) => {
+    useBodyHidden(open);
+
     const onCloseOverlay = (e: any) => {
         if (e.target.id === 'modal-overlay') {
             _onClose();

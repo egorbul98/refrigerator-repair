@@ -32,20 +32,25 @@
 }
 
 .innerContainer{
-    padding-top: 80px;
-    padding-bottom: 80px;
+    padding-top: 60px;
+    padding-bottom: 60px;
     position: relative;
     z-index: 1;
 
     @include screen-s-and-lesser{
-        padding-top: 32px;
-        padding-bottom: 32px;
+        padding-top: 40px;
+        padding-bottom: 40px;
     }
 }
 
 .title{
     @include font-h1;
     color: #fff;
+    max-width: 1140px;
+
+    @include screen-s-and-lesser{
+        max-width: 680px
+    }
 }
 
 .subtitle{

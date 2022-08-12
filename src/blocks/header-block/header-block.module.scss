@@ -8,14 +8,20 @@
     z-index: 2;
     background: #fff;
     box-shadow: $box-shadow;
+
+    @include screen-m-and-lesser{
+        height: 100px;
+    }
+
+    @include screen-s-and-lesser{
+        height: 80px;
+    }
 }
 
 .container{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-top: 32px;
-    padding-bottom: 32px;
     height: 100%;
 }
 
@@ -25,46 +31,33 @@
 }
 
 .logo{
-    font-size: 40px;
-    line-height: 50px;
-    border-bottom: 2px solid;
-    padding-bottom: 10px;
-    font-weight: 600;
-    display: flex;
-    color: $color-black;
-
-    .icon{
-        display: block;
-        font-size: 38px;
-        margin-top: 7px;
-        font-weight: bold;
+    @media screen and (max-width: 450px) {
+        display: none;
     }
 }
 
 .contacts{
     margin-left: 80px;
 
-    .capture{
-        @include text-14;
-        margin-top: 6px;
+    @include screen-m-and-lesser{
+        margin-left: 40px;
     }
 
-    .phone{
-        display: flex;
-        align-items: center;
-        font-weight: bold;
+    @media screen and (max-width: 710px){
+        display: none;
     }
+}
 
-    .iconPhone{
-        color: #fff;
-        border-radius: 50%;
-        background-color: #eb0a1e;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        margin-right: 8px;
-        font-size: 16px;
-        padding: 4px;
-        font-weight: bold;
+.desktop{
+    @include screen-s-and-lesser{
+        display: none;
+    }
+}
+
+.mobile{
+    display: none;
+
+    @include screen-s-and-lesser{
+        display: block;
     }
 }

@@ -1,0 +1,23 @@
+@import "../../styles/includes.scss";
+
+.menuButton{
+    background: transparent;
+    border: none;
+    height: 80px;
+    padding-left: 32px;
+    padding-right: 32px;
+    margin-left: -32px;
+
+    span{
+        font-size: 32px;
+        font-weight: bold;
+        line-height: 1;
+    }
+
+    @include screen-xs{
+        padding-left: 16px;
+        padding-right: 16px;
+        margin-left: -16px;
+    }
+
+}

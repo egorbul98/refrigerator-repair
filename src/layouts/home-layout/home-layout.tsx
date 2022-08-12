@@ -16,6 +16,7 @@ import { SuccessModal } from '../../components/success-modal/success-modal';
 import { useBodyHidden } from '../../utils/use-body-hidden';
 import { Contacts } from '../../components/contacts/contacts';
 import { Logo } from '../../components/logo/logo';
+import { MapBlock } from '../../blocks/map-block/map-block';
 
 export const HomeLayout = () => {
     const [openModal, setOpenModal] = useState(false);
@@ -53,6 +54,8 @@ export const HomeLayout = () => {
                     <BannerBlock onClickButton={openModalHandler} />
                     <FaqBlock />
                     <ReviewsBlock />
+
+                    <MapBlock />
                 </main>
             </div>
 

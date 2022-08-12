@@ -7,17 +7,23 @@
     padding-left: 32px;
     padding-right: 32px;
     margin-left: -32px;
-
-    span{
-        font-size: 32px;
-        font-weight: bold;
-        line-height: 1;
-    }
+    cursor: pointer;
+    transition: $transition;
 
     @include screen-xs{
         padding-left: 16px;
         padding-right: 16px;
         margin-left: -16px;
+    }
+
+    &:hover{
+        color: $color-blue;
+    }
+
+    span{
+        font-size: 32px;
+        font-weight: bold;
+        line-height: 1;
     }
 
 }

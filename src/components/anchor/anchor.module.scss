@@ -1,0 +1,27 @@
+@import "../../styles/includes.scss";
+
+.anchor{
+   visibility: hidden;
+   position: relative;
+   top: -124px;
+
+   @include screen-m-and-lesser{
+      top: -100px;
+   }
+
+   @include screen-s-and-lesser{
+      top: -80px;
+   }
+
+   &.offset{
+      top: -132px;
+
+      @include screen-m-and-lesser{
+         top: -108px;
+      }
+   
+      @include screen-s-and-lesser{
+         top: -88px;
+      }
+   }
+}

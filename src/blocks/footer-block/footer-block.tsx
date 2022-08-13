@@ -1,5 +1,4 @@
 import React from 'react';
-import cn from 'classnames';
 import styles from './footer-block.module.scss';
 import { Link } from '../../components/link/link';
 import { ADDRESS, MASTER_EMAIL, MASTER_PHONE } from '../../components/feedback-form/constants';
@@ -10,12 +9,17 @@ import { MirIcon } from '../../assets/icons/payment/mir';
 import { VisaIcon } from '../../assets/icons/payment/visa';
 import { SberIcon } from '../../assets/icons/payment/sber';
 import { TinkoffIcon } from '../../assets/icons/payment/tinkoff';
+import { scrollIntoView } from '../../utils/scroll-into-view';
 
 interface Props {
     navLinks: NavLinkProp[];
 }
 
 export const FooterBlock = ({ navLinks }: Props) => {
+    const handleClickItem = (id: string) => {
+        scrollIntoView(id);
+    };
+
     return (
         <footer>
             <BlockLayout paddingTop paddingBottom backgroundColor="blue-light">
@@ -24,7 +28,15 @@ export const FooterBlock = ({ navLinks }: Props) => {
                         {navLinks.map((item) => {
                             return (
                                 <div key={item.label} className={styles.item}>
-                                    <Link href={item.href}>{item.label}</Link>
+                                    <Link
+                                        href={item.href}
+                                        onClick={(e: any) => {
+                                            e.preventDefault();
+                                            handleClickItem(item.href);
+                                        }}
+                                    >
+                                        {item.label}
+                                    </Link>
                                 </div>
                             );
                         })}

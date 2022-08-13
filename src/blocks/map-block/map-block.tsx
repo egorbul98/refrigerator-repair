@@ -5,7 +5,8 @@ import { ADDRESS, MASTER_EMAIL, MASTER_PHONE } from '../../components/feedback-f
 
 // const listData = [];
 
-const coords = [55.751574, 37.573856];
+const coordsPlacemark = [55.78567, 37.484029];
+const coordsCenter = [coordsPlacemark[0] + 0.03, coordsPlacemark[1] - 0.1];
 
 export const MapBlock = () => {
     return (
@@ -26,13 +27,12 @@ export const MapBlock = () => {
             <YMaps width={'100%'} height={'100%'}>
                 <Map
                     defaultState={{
-                        center: coords,
-                        zoom: 9,
+                        center: coordsCenter,
+                        zoom: 11,
                     }}
-                    width={'100%'}
-                    height={600}
+                    className={styles.map}
                 >
-                    <Placemark geometry={coords} />
+                    <Placemark geometry={coordsPlacemark} />
                 </Map>
             </YMaps>
         </div>

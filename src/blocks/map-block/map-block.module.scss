@@ -21,7 +21,7 @@
     top: 60px;
     padding: 32px;
     display: inline-block;
-    z-index: 10;
+    z-index: 1;
 
     @include screen-m-and-lesser {
         left: 48px;
@@ -43,15 +43,6 @@
 
         &:last-child{
             margin-bottom: 0;
-        }
-
-        a{
-            text-decoration: none;
-            color: $color-blue;
-
-            &:hover{
-                color: $color-blue-hover;
-            }
         }
     }
 

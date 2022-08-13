@@ -11,7 +11,7 @@ export const Contacts = () => {
                 <span className={cn(styles.iconPhone, 'material-symbols-outlined')}>call</span>
                 {MASTER_PHONE}
             </Link>
-            <div className={styles.capture}>8:00 — 21:00 без выходных</div>
+            <div className={styles.capture}>8:00&nbsp;—&nbsp;21:00 без выходных</div>
         </div>
     );
 };

@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { HeaderBlock } from '../../blocks/header-block/header-block';
 import styles from './home-layout.module.scss';
 import cn from 'classnames';
-import { Link } from '../../components/link/link';
 import { HomeBlock } from '../../blocks/home-block/home-block';
 import { FeedbackFormModal } from '../../components/feedback-form/feedback-form-modal';
 import { AboutUsBlock } from '../../blocks/about-us-block/about-us-block';
@@ -17,12 +16,28 @@ import { useBodyHidden } from '../../utils/use-body-hidden';
 import { Contacts } from '../../components/contacts/contacts';
 import { Logo } from '../../components/logo/logo';
 import { MapBlock } from '../../blocks/map-block/map-block';
+import { navLinksData } from '../../data/nav-links-data';
+import { NavigationLinks } from '../../components/nav-links/nav-links';
+import { FooterBlock } from '../../blocks/footer-block/footer-block';
 
 export const HomeLayout = () => {
     const [openModal, setOpenModal] = useState(false);
     const [openMenu, setOpenMenu] = useState(false);
 
+    const needOpenModalByTimeout = useRef(true);
+
+    // useEffect(() => {
+    //     const timeoutId = setTimeout(() => {
+    //         if (needOpenModalByTimeout.current) {
+    //             setOpenModal(true);
+    //         }
+    //     }, 20000);
+
+    //     return () => clearTimeout(timeoutId);
+    // }, [setOpenModal, needOpenModalByTimeout]);
+
     const openModalHandler = () => {
+        needOpenModalByTimeout.current = false;
         setOpenModal(true);
     };
 
@@ -45,6 +60,7 @@ export const HomeLayout = () => {
                         toggleMenuHandler={toggleMenuHandler}
                         openMenu={openMenu}
                     />
+
                     <HomeBlock />
                     <AboutUsBlock />
                     <ServicesBlock onClickItem={openModalHandler} />
@@ -56,6 +72,8 @@ export const HomeLayout = () => {
                     <ReviewsBlock />
 
                     <MapBlock />
+
+                    <FooterBlock navLinks={navLinksData} />
                 </main>
             </div>
 
@@ -71,7 +89,7 @@ const Sidebar = ({ openMenu, closeMenuHandler }: { openMenu: boolean; closeMenuH
             <div className={styles.sidebarLogo}>
                 <Logo />
             </div>
-            <NavigationLinks items={navLinks} onClickItem={closeMenuHandler} />
+            <NavigationLinks items={navLinksData} onClickItem={closeMenuHandler} />
             <div className={styles.sidebarContacts}>
                 <Contacts />
             </div>
@@ -99,36 +117,5 @@ const FeedbackLogic = ({ openModal, onClose: _onClose }: { openModal: boolean; o
             <FeedbackFormModal open={openModal} onClose={onCloseFeedbackModal} onSubmit={onSubmit} />
             <SuccessModal open={openSuccessModal} onClose={onCloseSuccessModal} />
         </>
-    );
-};
-
-const navLinks: NavLinkProp[] = [
-    { label: 'О компании', icon: 'kitchen', href: '#about' },
-    { label: 'Стоимость ремонта', icon: 'tools_wrench', href: '#services' },
-    { label: 'Бренды', icon: 'kitchen', href: '#about' },
-    { label: 'Сертификаты и партнеры', icon: 'verified', href: '#about' },
-    { label: 'Вопросы', icon: 'quiz', href: '#about' },
-    { label: 'Отзывы', icon: 'reviews', href: '#about' },
-    { label: 'Контакты', icon: 'pin_drop', href: '#about' },
-];
-
-interface NavLinkProp {
-    label: string;
-    href: string;
-    icon: string;
-}
-
-const NavigationLinks = ({ items, onClickItem }: { items: NavLinkProp[]; onClickItem: (e?: any) => void }) => {
-    return (
-        <nav className={styles.links}>
-            {items.map((item) => {
-                return (
-                    <Link className={styles.item} key={item.label} href={item.href} onClick={onClickItem}>
-                        <div className={cn('material-symbols-outlined', styles.icon)}>{item.icon}</div>
-                        <div className={styles.label}>{item.label}</div>
-                    </Link>
-                );
-            })}
-        </nav>
     );
 };

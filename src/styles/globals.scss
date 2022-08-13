@@ -34,7 +34,10 @@ a, button {
 }
 
 a{
+    text-decoration: none;
+    color: $color-blue;
+
     &:hover{
-        color: $color-blue;
+        color: $color-blue-hover;
     }
 }

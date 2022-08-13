@@ -49,3 +49,9 @@
 .background-blue-light{
    background-color: $color-blue-light;
 }
+
+.innerContainer > div{
+   &:first-child{
+      margin-top: 0;
+   }
+}

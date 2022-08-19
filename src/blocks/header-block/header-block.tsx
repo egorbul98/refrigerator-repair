@@ -1,9 +1,7 @@
 import React from 'react';
 import { Container } from '../../components/container/container';
-import cn from 'classnames';
 import styles from './header-block.module.scss';
 import { Button } from '../../components/button/button';
-import { Link } from '../../components/link/link';
 import { MenuButton } from '../../components/menu-button/menu-button';
 import { Contacts } from '../../components/contacts/contacts';
 import { Logo } from '../../components/logo/logo';

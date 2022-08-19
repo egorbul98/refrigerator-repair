@@ -24,15 +24,23 @@
     background: $color-blue-light;
     text-align: center;
     padding: 24px;
-    // box-shadow: $box-shadow;
     height: 100%;
 
     .title{
         margin-top: 16px;
         font-weight: bold;
+
+        @include screen-s-and-lesser{
+            margin-top: 8px;
+        }
     }
 
     .description{
         margin-top: 16px;
     }
+}
+
+.icon.icon{
+    font-size: 80px;
+    color: $color-blue;
 }

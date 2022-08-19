@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './about-us-block.module.scss';
 import { BlockLayout } from '../../components/block-layout/block-layout';
+import cn from 'classnames';
 
 const listData = [
     {
@@ -11,25 +12,25 @@ const listData = [
     {
         title: 'Быстрое решение проблем!',
         description: 'Принимаем заявки круглосуточно. Устраним поломку в течение 24 часов.',
-        icon: 'local_shipping',
+        icon: 'timer',
     },
     {
         title: 'Гарантия до 2 лет',
         description: 'Мы предоставляем официальную гарантию на услуги и запчасти сроком до 2 лет.',
-        icon: 'local_shipping',
+        icon: 'Inventory',
     },
     {
         title: 'Мастера с опытом 10+ лет',
         description: `Все специалисты имеют профильное образование и большой опыт работы. Компания несет ответственность за сотрудников.`,
-        icon: 'local_shipping',
+        icon: 'Handyman',
     },
     {
         title: 'Оригинальные запчасти, сертифицированные производителями',
-        icon: 'local_shipping',
+        icon: 'Done_Outline',
     },
     {
         title: `60 % клиентов, которые приходят к нам в первый раз - узнают о ПрофХолоде через советы знакомых.`,
-        icon: 'local_shipping',
+        icon: 'Group',
     },
 ];
 
@@ -41,7 +42,7 @@ export const AboutUsBlock = () => {
                     return (
                         <div key={i} className={styles.item}>
                             <div className={styles.card}>
-                                <div className={styles.icon}>{item.icon}</div>
+                                <div className={cn('material-symbols-outlined', styles.icon)}>{item.icon}</div>
                                 <div className={styles.title}>{item.title}</div>
                                 {item.description && <div className={styles.description}>{item.description}</div>}
                             </div>

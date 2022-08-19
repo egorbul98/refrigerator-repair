@@ -26,15 +26,15 @@ export const HomeLayout = () => {
 
     const needOpenModalByTimeout = useRef(true);
 
-    // useEffect(() => {
-    //     const timeoutId = setTimeout(() => {
-    //         if (needOpenModalByTimeout.current) {
-    //             setOpenModal(true);
-    //         }
-    //     }, 20000);
+    useEffect(() => {
+        const timeoutId = setTimeout(() => {
+            if (needOpenModalByTimeout.current) {
+                setOpenModal(true);
+            }
+        }, 20000);
 
-    //     return () => clearTimeout(timeoutId);
-    // }, [setOpenModal, needOpenModalByTimeout]);
+        return () => clearTimeout(timeoutId);
+    }, [setOpenModal, needOpenModalByTimeout]);
 
     const openModalHandler = () => {
         needOpenModalByTimeout.current = false;

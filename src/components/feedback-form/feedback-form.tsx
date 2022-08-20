@@ -52,7 +52,7 @@ export const useFeedbackFormInputs = ({ onSubmit: _onSubmit }: Props) => {
     useEffect(() => {
         validatePhone(phone);
         validateName(name);
-    }, []);
+    }, [phone, name]);
 
     const validatePhone = (value: string) => {
         if (value.length < 18) {
@@ -84,16 +84,18 @@ export const useFeedbackFormInputs = ({ onSubmit: _onSubmit }: Props) => {
     };
 
     const onSubmit = () => {
-        console.log('onSubmit', hasErrors);
-
         if (!hasErrors) {
             _onSubmit?.({ name, phone });
+            onReset();
         } else {
             setShowErrors(true);
         }
     };
 
-    console.log({ hasErrors, showErrors });
+    const onReset = () => {
+        setPhone('');
+        setName('');
+    };
 
     const errorsComponent = showErrors && (
         <div className={styles.errors}>

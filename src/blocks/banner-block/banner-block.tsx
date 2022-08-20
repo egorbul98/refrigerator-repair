@@ -18,7 +18,7 @@ export const BannerBlock = ({ onClickButton }: Props) => {
                         <span className="material-symbols-outlined">call</span>
                     </div>
                     <div className={styles.text}>
-                        <h3 className={styles.title}>Вызовите мастера холодильников</h3>
+                        <h3 className={styles.title}>Вызовите мастера и получите скидку 20%</h3>
                         <div className={styles.description}>
                             Оставьте заявку и&nbsp;мы&nbsp;свяжемся с&nbsp;Вами в&nbsp;течение 15&nbsp;минут.
                         </div>

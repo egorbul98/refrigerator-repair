@@ -30,7 +30,7 @@ export const Modal = ({ children, title, description, open, onClose: _onClose }:
 
                 <div className={styles.description}>{description}</div>
 
-                <div className={styles.content}>{children}</div>
+                {children && <div className={styles.content}>{children}</div>}
             </div>
         </div>
     );

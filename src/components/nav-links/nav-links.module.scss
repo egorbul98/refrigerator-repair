@@ -20,8 +20,20 @@
         font-weight: 500;
         color: $color-black;
 
-        @include screen-m-and-lesser{
+        @include screen-l-and-lesser{
             height: 100px;
+        }
+
+        @media screen and (max-height: 720px) {
+            height: 100px;
+        }
+
+        @media screen and (max-height: 700px) {
+            height: 92px;
+        }
+
+        @media screen and (max-height: 625px) {
+            height: 80px;
         }
 
         @include screen-s-and-lesser{

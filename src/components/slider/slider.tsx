@@ -1,12 +1,12 @@
 import React, { useRef } from 'react';
 import styles from './slider.module.scss';
-import { Swiper, SwiperSlide, SwiperProps } from 'swiper/react';
-import 'swiper/css';
+import './swiper.css';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import cn from 'classnames';
 
 interface Props {
     slides: React.ReactNode[];
-    swiperProps?: SwiperProps;
+    swiperProps?: any;
     classNames?: { navigation?: string; swiper?: string };
 }
 

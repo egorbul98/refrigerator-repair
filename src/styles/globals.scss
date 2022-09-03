@@ -1,5 +1,7 @@
 @import '_includes.scss';
-@import 'material-symbols';
+// https://www.npmjs.com/package/material-symbols fix webpack build
+// $material-symbols-font-path: '~material-symbols/';
+// @import 'material-symbols/outlined.scss';
 
 *{
     margin: 0;

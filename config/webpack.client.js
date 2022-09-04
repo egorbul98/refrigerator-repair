@@ -5,15 +5,18 @@ const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { getRules } = require('./webpack-utils');
 
-function createConfig() {
+function createConfig(_, {mode}) {
     const root = path.resolve(__dirname, '../');
+    
+    const isProd = mode === 'production';
+    const isDev = mode === 'development';
 
     return {
         name: 'client',
         entry: {
             client: path.resolve(root, 'src/client.tsx'),
         },
-        mode: 'production',
+        mode,
         output: {
             path: path.resolve(root, 'dist'),
             filename: '[name].[contenthash].js',
@@ -59,4 +62,4 @@ function createConfig() {
     };
 }
 
-module.exports = createConfig();
+module.exports = createConfig;

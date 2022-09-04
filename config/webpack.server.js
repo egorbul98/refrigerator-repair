@@ -60,4 +60,4 @@ function createConfig() {
     };
 }
 
-module.exports = createConfig();
+module.exports = createConfig;

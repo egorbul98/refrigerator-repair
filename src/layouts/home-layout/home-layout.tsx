@@ -19,6 +19,7 @@ import { MapBlock } from '../../blocks/map-block/map-block';
 import { navLinksData } from '../../data/nav-links-data';
 import { NavigationLinks } from '../../components/nav-links/nav-links';
 import { FooterBlock } from '../../blocks/footer-block/footer-block';
+import { callMaster } from '../../api/call-master';
 
 export const HomeLayout = () => {
     const [openModal, setOpenModal] = useState(false);
@@ -100,7 +101,8 @@ const Sidebar = ({ openMenu, closeMenuHandler }: { openMenu: boolean; closeMenuH
 const FeedbackLogic = ({ openModal, onClose: _onClose }: { openModal: boolean; onClose: () => void }) => {
     const [openSuccessModal, setOpenSuccessModal] = useState(false);
 
-    const onSubmit = () => {
+    const onSubmit = async () => {
+        await callMaster({ name: 'EEEEE', phone: 'sadsad' });
         setOpenSuccessModal(true);
     };
 

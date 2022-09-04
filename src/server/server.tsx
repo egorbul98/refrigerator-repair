@@ -5,6 +5,7 @@ import { renderToString } from 'react-dom/server';
 import { App } from '../App';
 import { renderTemplate } from './utils/render-template';
 import fs from 'fs';
+import { sendEmail } from './utils/send-email';
 
 const app = express();
 
@@ -21,6 +22,14 @@ app.get('/', (req, res) => {
             jsPaths: [`${manifest['client.js']}`],
         }),
     );
+});
+
+app.post('/api/email/send', async (req, res) => {
+    console.log('AAAAAA', req);
+
+    await sendEmail({ ...req.body });
+
+    res.send({ status: 'ok' });
 });
 
 app.listen('3000', () => {

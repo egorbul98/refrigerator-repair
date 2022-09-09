@@ -17,7 +17,7 @@
     "start": "yarn build:client && yarn build:server && yarn start:server",
     "build:css": "postcss src/styles/globals.css -o src/index.css",
     "watch:css": "postcss src/styles/globals.css -o src/index.css -w",
-    "start:dev2": "react-scripts start",
+    "start:react-scripts": "react-scripts start",
     "build": "react-scripts build",
     "postbuild": "react-snap",
     "test": "react-scripts test",

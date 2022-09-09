@@ -1,5 +1,5 @@
 ## запуск
-1. yarn && yarn start:dev
+1. yarn && yarn start:react-scripts
 
 ## скрипты автогенерации
 в package.json:

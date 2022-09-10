@@ -20,11 +20,18 @@ import { navLinksData } from '../../data/nav-links-data';
 import { NavigationLinks } from '../../components/nav-links/nav-links';
 import { FooterBlock } from '../../blocks/footer-block/footer-block';
 import { callMaster } from '../../api/call-master';
+import { ERROR_SEND_FORM } from '../../components/feedback-form/constants';
 
 export const HomeLayout = () => {
     const [openModal, setOpenModal] = useState(false);
     const [openMenu, setOpenMenu] = useState(false);
-
+    const [openSuccessModal, setOpenSuccessModal] = useState(false);
+    const onCloseSuccessModal = () => {
+        setOpenSuccessModal(false);
+    };
+    const openSuccessModalHandler = () => {
+        setOpenSuccessModal(true);
+    };
     const needOpenModalByTimeout = useRef(true);
 
     useEffect(() => {
@@ -62,7 +69,7 @@ export const HomeLayout = () => {
                         openMenu={openMenu}
                     />
 
-                    <HomeBlock />
+                    <HomeBlock openSuccessModal={openSuccessModalHandler} />
                     <AboutUsBlock />
                     <ServicesBlock onClickItem={openModalHandler} />
                     <BannerBlock onClickButton={openModalHandler} />
@@ -78,7 +85,13 @@ export const HomeLayout = () => {
                 </main>
             </div>
 
-            <FeedbackLogic onClose={() => setOpenModal(false)} openModal={openModal} />
+            <FeedbackLogic
+                onClose={() => setOpenModal(false)}
+                openModal={openModal}
+                openSuccessModal={openSuccessModalHandler}
+            />
+
+            <SuccessModal open={openSuccessModal} onClose={onCloseSuccessModal} />
         </>
     );
 };
@@ -98,26 +111,32 @@ const Sidebar = ({ openMenu, closeMenuHandler }: { openMenu: boolean; closeMenuH
     );
 };
 
-const FeedbackLogic = ({ openModal, onClose: _onClose }: { openModal: boolean; onClose: () => void }) => {
-    const [openSuccessModal, setOpenSuccessModal] = useState(false);
-
-    const onSubmit = async () => {
-        await callMaster({ name: 'EEEEE', phone: 'sadsad' });
-        setOpenSuccessModal(true);
+const FeedbackLogic = ({
+    openModal,
+    onClose: _onClose,
+    openSuccessModal,
+}: {
+    openModal: boolean;
+    onClose: () => void;
+    openSuccessModal?: () => void;
+}) => {
+    const onSubmit = async (data: any) => {
+        try {
+            await callMaster(data);
+            openSuccessModal?.();
+        } catch (error) {
+            alert(ERROR_SEND_FORM);
+            console.error(error);
+        }
     };
 
     const onCloseFeedbackModal = () => {
         _onClose();
     };
 
-    const onCloseSuccessModal = () => {
-        setOpenSuccessModal(false);
-    };
-
     return (
         <>
             <FeedbackFormModal open={openModal} onClose={onCloseFeedbackModal} onSubmit={onSubmit} />
-            <SuccessModal open={openSuccessModal} onClose={onCloseSuccessModal} />
         </>
     );
 };

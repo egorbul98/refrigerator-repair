@@ -5,3 +5,5 @@ export const FEEDBACK_FORM_CONSENT =
 export const MASTER_PHONE = '+7\u00A0(495)\u00A0203-56-93';
 export const MASTER_EMAIL = 'eldar@mail.ru';
 export const ADDRESS = 'Москва, ул.\u00A0Народного Ополчения, д.\u00A034';
+
+export const ERROR_SEND_FORM = `Произошла ошибка при отправке формы\nПопробуйте позже, либо позвоните по номеру ${MASTER_PHONE}`;

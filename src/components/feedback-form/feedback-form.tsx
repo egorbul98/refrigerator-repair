@@ -6,7 +6,7 @@ import { PhoneInput } from '../inputs/phone-input/phone-input';
 import { FEEDBACK_FORM_CONSENT } from './constants';
 
 interface Props {
-    onSubmit: (data?: any) => void;
+    onSubmit: (data?: { name: string; phone: string }) => void;
 }
 
 export const FeedbackForm = ({ onSubmit: _onSubmit }: Props) => {

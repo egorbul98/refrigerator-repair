@@ -7,7 +7,12 @@ import { useFeedbackFormInputs } from '../../components/feedback-form/feedback-f
 import { PhoneInput } from '../../components/inputs/phone-input/phone-input';
 import { TextInput } from '../../components/inputs/text-input/text-input';
 import { Button } from '../../components/button/button';
-import { FEEDBACK_FORM_CONSENT, FEEDBACK_FORM_DESCRIPTION } from '../../components/feedback-form/constants';
+import {
+    ERROR_SEND_FORM,
+    FEEDBACK_FORM_CONSENT,
+    FEEDBACK_FORM_DESCRIPTION,
+} from '../../components/feedback-form/constants';
+import { callMaster } from '../../api/call-master';
 
 const listData = [
     {
@@ -24,9 +29,15 @@ const listData = [
     },
 ];
 
-export const HomeBlock = () => {
-    const onSubmit = () => {
-        // console.log('SSSSS');
+export const HomeBlock = ({ openSuccessModal }: { openSuccessModal?: () => void }) => {
+    const onSubmit = async (data: any) => {
+        try {
+            await callMaster(data);
+            openSuccessModal?.();
+        } catch (error) {
+            alert(ERROR_SEND_FORM);
+            console.error(error);
+        }
     };
 
     return (

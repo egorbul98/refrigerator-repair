@@ -7,7 +7,7 @@ import { renderTemplate } from './utils/render-template';
 import fs from 'fs';
 import { sendEmail } from './utils/send-email';
 import bodyParser from 'body-parser';
-
+import { env } from './config';
 const isDev = process.env.MODE === 'development';
 
 function useMiddlewares(app: Application) {
@@ -21,6 +21,7 @@ function useMiddlewares(app: Application) {
 }
 
 export async function createApp() {
+    console.log({ env });
     const app = express();
 
     const manifest: any = JSON.parse(fs.readFileSync(path.join(__dirname, 'manifest.json'), 'utf-8'));

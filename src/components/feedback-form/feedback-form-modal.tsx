@@ -6,7 +6,7 @@ import { FeedbackForm } from './feedback-form';
 interface Props {
     open: boolean;
     onClose: () => void;
-    onSubmit?: () => void;
+    onSubmit?: (data: any) => void;
 }
 
 export const FeedbackFormModal = ({ open: _open, onClose: _onClose, onSubmit: _onSubmit }: Props) => {
@@ -21,8 +21,8 @@ export const FeedbackFormModal = ({ open: _open, onClose: _onClose, onSubmit: _o
         _onClose();
     };
 
-    const onSubmit = () => {
-        _onSubmit?.();
+    const onSubmit = (data: any) => {
+        _onSubmit?.(data);
         onClose();
     };
 

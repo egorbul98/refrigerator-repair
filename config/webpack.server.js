@@ -9,7 +9,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { getRules } = require('./webpack-utils');
 
-function createConfig(_, { mode }) {
+function createConfig(_, { mode = 'production' }) {
     const root = path.resolve(__dirname, '../');
 
     const isProd = mode === 'production';

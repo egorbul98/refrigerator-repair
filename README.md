@@ -6,10 +6,6 @@
 
     2.1. yarn start:react-scripts
 
-    Для сервера соответсвенно
-
-    2.2. yarn start:server
-
 3. open http://localhost:3000
 
 ## скрипты автогенерации

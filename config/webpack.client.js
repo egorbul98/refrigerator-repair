@@ -7,7 +7,7 @@ const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin'
 const { getRules } = require('./webpack-utils');
 const webpack = require('webpack');
 
-function createConfig(_, { mode }) {
+function createConfig(_, { mode = 'production' }) {
     const root = path.resolve(__dirname, '../');
 
     const isProd = mode === 'production';

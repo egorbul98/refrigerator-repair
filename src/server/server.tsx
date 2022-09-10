@@ -1,20 +1,31 @@
 import React from 'react';
-import express from 'express';
+import express, { Application } from 'express';
 import path from 'path';
 import { renderToString } from 'react-dom/server';
 import { App } from '../App';
 import { renderTemplate } from './utils/render-template';
 import fs from 'fs';
 import { sendEmail } from './utils/send-email';
+import bodyParser from 'body-parser';
 
 const isDev = process.env.MODE === 'development';
+
+function useMiddlewares(app: Application) {
+    app.use(express.static('dist'));
+    app.use(
+        bodyParser.urlencoded({
+            extended: true,
+        }),
+    );
+    app.use(bodyParser.json());
+}
 
 export async function createApp() {
     const app = express();
 
     const manifest: any = JSON.parse(fs.readFileSync(path.join(__dirname, 'manifest.json'), 'utf-8'));
 
-    app.use(express.static('dist'));
+    useMiddlewares(app);
 
     app.get('/', (req, res) => {
         const content = renderToString(<App />);
@@ -28,10 +39,7 @@ export async function createApp() {
     });
 
     app.post('/api/email/send', async (req, res) => {
-        console.log('EMAIL 33333ata', req);
-
-        await sendEmail({ ...req.body });
-
+        await sendEmail(req.body);
         res.send({ status: 'ok' });
     });
 

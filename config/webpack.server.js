@@ -9,8 +9,11 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { getRules } = require('./webpack-utils');
 
-function createConfig() {
+function createConfig(_, { mode }) {
     const root = path.resolve(__dirname, '../');
+
+    const isProd = mode === 'production';
+    const isDev = mode === 'development';
 
     return {
         name: 'server',
@@ -56,7 +59,7 @@ function createConfig() {
                 // },
             ],
         },
-        plugins: [new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' })],
+        plugins: [new MiniCssExtractPlugin({ filename: isDev ? '[name].css' : '[name].[contenthash].css' })],
     };
 }
 

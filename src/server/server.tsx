@@ -7,31 +7,43 @@ import { renderTemplate } from './utils/render-template';
 import fs from 'fs';
 import { sendEmail } from './utils/send-email';
 
-const app = express();
+const isDev = process.env.MODE === 'development';
 
-const manifest: any = JSON.parse(fs.readFileSync(path.join(__dirname, 'manifest.json'), 'utf-8'));
+export async function createApp() {
+    const app = express();
 
-app.use(express.static('dist'));
+    const manifest: any = JSON.parse(fs.readFileSync(path.join(__dirname, 'manifest.json'), 'utf-8'));
 
-app.get('/', (req, res) => {
-    const content = renderToString(<App />);
-    res.send(
-        renderTemplate({
-            content,
-            cssPaths: [`${manifest['client.css']}`],
-            jsPaths: [`${manifest['client.js']}`],
-        }),
-    );
-});
+    app.use(express.static('dist'));
 
-app.post('/api/email/send', async (req, res) => {
-    console.log('AAAAAA', req);
+    app.get('/', (req, res) => {
+        const content = renderToString(<App />);
+        res.send(
+            renderTemplate({
+                content,
+                cssPaths: [`${manifest['client.css']}`],
+                jsPaths: [`${manifest['client.js']}`],
+            }),
+        );
+    });
 
-    await sendEmail({ ...req.body });
+    app.post('/api/email/send', async (req, res) => {
+        console.log('EMAIL 33333ata', req);
 
-    res.send({ status: 'ok' });
-});
+        await sendEmail({ ...req.body });
 
-app.listen('3000', () => {
-    console.log(`Server running on http://localhost:3000`);
-});
+        res.send({ status: 'ok' });
+    });
+
+    if (!isDev) {
+        app.listen('3000', () => {
+            console.log(`Server running on http://localhost:3000`);
+        });
+    }
+
+    return app;
+}
+
+if (!isDev) {
+    createApp();
+}

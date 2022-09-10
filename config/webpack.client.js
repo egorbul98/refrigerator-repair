@@ -3,18 +3,23 @@ const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const { getRules } = require('./webpack-utils');
+const webpack = require('webpack');
 
-function createConfig(_, {mode}) {
+function createConfig(_, { mode }) {
     const root = path.resolve(__dirname, '../');
-    
+
     const isProd = mode === 'production';
     const isDev = mode === 'development';
 
     return {
         name: 'client',
         entry: {
-            client: path.resolve(root, 'src/client.tsx'),
+            client: [
+                ...(isDev ? ['webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true'] : []),
+                path.resolve(root, 'src/client.tsx'),
+            ],
         },
         mode,
         output: {
@@ -41,6 +46,7 @@ function createConfig(_, {mode}) {
                                 require.resolve('@babel/preset-react'),
                             ],
                             plugins: [
+                                ...(isDev ? [require.resolve('react-refresh/babel')] : []),
                                 [
                                     '@babel/plugin-transform-runtime',
                                     {
@@ -56,8 +62,10 @@ function createConfig(_, {mode}) {
         },
         plugins: [
             new CleanWebpackPlugin(),
-            new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' }),
+            new MiniCssExtractPlugin({ filename: isDev ? '[name].css' : '[name].[contenthash].css' }),
             new WebpackManifestPlugin(),
+            ...(isDev ? [new webpack.HotModuleReplacementPlugin({}), new ReactRefreshWebpackPlugin()] : []),
+            ...(isDev ? [new ReactRefreshWebpackPlugin()] : []),
         ],
     };
 }

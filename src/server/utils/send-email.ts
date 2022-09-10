@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer';
 import { env } from '../config';
-import { getEmailTemplate } from './get-email-template';
+import { EmailTemplate } from './templates/email-template';
 
 export async function sendEmail({ name, phone }: { phone?: string; name?: string }) {
     const transporter = nodemailer.createTransport(
@@ -23,7 +23,7 @@ export async function sendEmail({ name, phone }: { phone?: string; name?: string
 
     const info = await transporter.sendMail({
         subject: 'Нужен мастер по братски',
-        html: getEmailTemplate({ name, phone }),
+        html: EmailTemplate({ name, phone }),
     });
 
     console.log('Message sent: %s', info);

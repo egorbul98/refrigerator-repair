@@ -1,13 +1,12 @@
 import React from 'react';
 import express, { Application } from 'express';
 import path from 'path';
-import { renderToString } from 'react-dom/server';
 import { App } from '../App';
-import { renderTemplate } from './utils/render-template';
 import fs from 'fs';
 import { sendEmail } from './utils/send-email';
 import bodyParser from 'body-parser';
 import { env } from './config';
+import { HomeTemplate } from './utils/templates/home-template';
 const isDev = process.env.MODE === 'development';
 
 function useMiddlewares(app: Application) {
@@ -29,10 +28,9 @@ export async function createApp() {
     useMiddlewares(app);
 
     app.get('/', (req, res) => {
-        const content = renderToString(<App />);
         res.send(
-            renderTemplate({
-                content,
+            HomeTemplate({
+                content: <App />,
                 cssPaths: [`${manifest['client.css']}`],
                 jsPaths: [`${manifest['client.js']}`],
             }),

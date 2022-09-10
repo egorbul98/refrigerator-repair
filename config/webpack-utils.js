@@ -49,7 +49,7 @@ function getRules(type) {
             ],
         },
         {
-            test: /\.(png|jpg|jpeg|gif)$/i,
+            test: /\.(png|jpg|jpeg|gif|ico)$/i,
             use: [
                 {
                     loader: 'file-loader',

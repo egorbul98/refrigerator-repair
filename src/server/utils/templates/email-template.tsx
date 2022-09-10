@@ -1,11 +1,13 @@
 import React from 'react';
 
 import { renderToString } from 'react-dom/server';
+
 interface Props {
     phone?: string;
     name?: string;
 }
-export function getEmailTemplate({ name, phone }: Props) {
+
+export function EmailTemplate({ name, phone }: Props) {
     return renderToString(
         <div>
             <h2>Вызов мастера</h2>

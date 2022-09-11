@@ -33,7 +33,7 @@ function createConfig(_, { mode = 'production' }) {
         target: 'web',
         module: {
             rules: [
-                ...getRules('client'),
+                ...getRules('client', mode),
                 {
                     test: /\.(js|ts)x?$/,
                     exclude: /node_modules/,

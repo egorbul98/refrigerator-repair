@@ -3,12 +3,14 @@ const path = require('path');
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-function getRules(type) {
+function getRules(type, mode = 'production') {
     const root = path.resolve(__dirname, '../');
 
     const isClient = type === 'client';
     const isServer = type === 'server';
-    console.log({ isClient, isServer });
+    const isDev = mode === 'development';
+    const isProd = mode === 'production';
+    console.log({ type, mode });
 
     const postCssLoader = {
         loader: 'postcss-loader',
@@ -54,11 +56,38 @@ function getRules(type) {
                 {
                     loader: 'file-loader',
                     options: {
-                        outputPath: 'media',
-                        name: '[contenthash].[ext]',
+                        outputPath: 'images',
+                        name: isProd ? '[contenthash].[ext]' : '[name].[ext]',
                         limit: undefined,
                     },
                 },
+                ...(isProd
+                    ? [
+                          {
+                              loader: 'image-webpack-loader',
+                              options: {
+                                  mozjpeg: {
+                                      progressive: true,
+                                  },
+                                  // optipng.enabled: false will disable optipng
+                                  optipng: {
+                                      enabled: false,
+                                  },
+                                  pngquant: {
+                                      quality: [0.65, 0.9],
+                                      speed: 4,
+                                  },
+                                  gifsicle: {
+                                      interlaced: false,
+                                  },
+                                  // the webp option will enable WEBP
+                                  webp: {
+                                      quality: 75,
+                                  },
+                              },
+                          },
+                      ]
+                    : []),
             ],
         },
     ];

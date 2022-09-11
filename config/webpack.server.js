@@ -37,7 +37,7 @@ function createConfig(_, { mode = 'production' }) {
         },
         module: {
             rules: [
-                ...getRules('server'),
+                ...getRules('server', mode),
                 {
                     test: /\.(js|ts)x?$/,
                     exclude: /node_modules/,

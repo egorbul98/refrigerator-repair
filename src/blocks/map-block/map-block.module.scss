@@ -1,5 +1,14 @@
 @import "../../styles/_includes.scss";
 
+.wrapper{
+    display: none;
+
+    &.show{
+        display: block;
+    }
+}
+
+
 .container{
     position: relative;
 }

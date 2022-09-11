@@ -21,7 +21,7 @@ export const BrandsBlock = () => {
                     return (
                         <div key={i} className={styles.item}>
                             <div className={styles.imageWrap}>
-                                <img src={image} alt="" />
+                                <img src={image} alt="" loading="lazy" />
                             </div>
                         </div>
                     );

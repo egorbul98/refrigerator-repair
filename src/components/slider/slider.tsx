@@ -27,6 +27,7 @@ export const Slider = ({ slides, swiperProps, classNames }: Props) => {
             </div>
 
             <Swiper
+                lazy
                 spaceBetween={16}
                 slidesPerView={1}
                 onSwiper={(swiper) => (swiperRef.current = swiper)}

@@ -11,7 +11,7 @@ export const CertificatesBlock = () => {
                 slides={certificatesImages.map((item, i) => {
                     return (
                         <div className={styles.imageWrap} key={i}>
-                            <img src={item} alt="" />
+                            <img src={item} alt="" loading="lazy" />
                         </div>
                     );
                 })}

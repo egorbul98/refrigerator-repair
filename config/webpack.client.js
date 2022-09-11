@@ -6,6 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const { getRules } = require('./webpack-utils');
 const webpack = require('webpack');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 function createConfig(_, { mode = 'production' }) {
     const root = path.resolve(__dirname, '../');
@@ -65,8 +66,12 @@ function createConfig(_, { mode = 'production' }) {
             new MiniCssExtractPlugin({ filename: isDev ? '[name].css' : '[name].[contenthash].css' }),
             new WebpackManifestPlugin(),
             ...(isDev ? [new webpack.HotModuleReplacementPlugin({}), new ReactRefreshWebpackPlugin()] : []),
-            ...(isDev ? [new ReactRefreshWebpackPlugin()] : []),
         ],
+        ...(isProd && {
+            optimization: {
+                minimizer: [`...`, new CssMinimizerPlugin()],
+            },
+        }),
     };
 }
 

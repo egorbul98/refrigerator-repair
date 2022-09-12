@@ -1,4 +1,5 @@
 import nodemailer from 'nodemailer';
+import { MASTER_EMAIL } from '../../components/feedback-form/constants';
 import { env } from '../config';
 import { EmailTemplate } from './templates/email-template';
 
@@ -16,7 +17,7 @@ export async function sendEmail({ name, phone }: { phone?: string; name?: string
             },
         },
         {
-            to: [env.EMAIL_TO],
+            to: [MASTER_EMAIL],
             from: `Холодильник Отремонтирович <${env.EMAIL_FROM_USER}>`,
         },
     );

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, Suspense, lazy } from 'react';
 import { HeaderBlock } from '../../blocks/header-block/header-block';
 import styles from './home-layout.module.scss';
 import cn from 'classnames';
@@ -15,12 +15,15 @@ import { SuccessModal } from '../../components/success-modal/success-modal';
 import { useBodyHidden } from '../../utils/use-body-hidden';
 import { Contacts } from '../../components/contacts/contacts';
 import { Logo } from '../../components/logo/logo';
-import { MapBlock } from '../../blocks/map-block/map-block';
 import { navLinksData } from '../../data/nav-links-data';
 import { NavigationLinks } from '../../components/nav-links/nav-links';
 import { FooterBlock } from '../../blocks/footer-block/footer-block';
 import { callMaster } from '../../api/call-master';
 import { ERROR_SEND_FORM } from '../../components/feedback-form/constants';
+const MapBlock = lazy(async () => {
+    const { MapBlock: _MapBlock } = await import('../../blocks/map-block/map-block');
+    return { default: _MapBlock };
+});
 
 export const HomeLayout = () => {
     const [openModal, setOpenModal] = useState(false);
@@ -79,7 +82,9 @@ export const HomeLayout = () => {
                     <FaqBlock />
                     <ReviewsBlock />
 
-                    <MapBlock />
+                    <Suspense>
+                        <MapBlock />
+                    </Suspense>
 
                     <FooterBlock navLinks={navLinksData} />
                 </main>

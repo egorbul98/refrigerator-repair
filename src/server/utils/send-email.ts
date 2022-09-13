@@ -23,7 +23,7 @@ export async function sendEmail({ name, phone }: { phone?: string; name?: string
     );
 
     const info = await transporter.sendMail({
-        subject: 'Нужен мастер по братски',
+        subject: '...',
         html: EmailTemplate({ name, phone }),
     });
 

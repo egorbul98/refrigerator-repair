@@ -19,11 +19,17 @@ function useMiddlewares(app: Application) {
     app.use(bodyParser.json());
 }
 
+interface Manifest {
+    arrCss: string[];
+    arrJs: string[];
+    arrAssets: string[];
+}
+
 export async function createApp() {
     console.log({ env });
     const app = express();
 
-    const manifest: any = JSON.parse(fs.readFileSync(path.join(__dirname, 'manifest.json'), 'utf-8'));
+    const manifest: Manifest = JSON.parse(fs.readFileSync(path.join(__dirname, 'manifest.json'), 'utf-8'));
 
     useMiddlewares(app);
 
@@ -31,8 +37,8 @@ export async function createApp() {
         res.send(
             HomeTemplate({
                 content: <App />,
-                cssPaths: [`${manifest['client.css']}`],
-                jsPaths: [`${manifest['client.js']}`],
+                cssPaths: manifest.arrCss,
+                jsPaths: manifest.arrJs,
             }),
         );
     });

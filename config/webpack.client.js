@@ -64,7 +64,7 @@ function createConfig(_, { mode = 'production' }) {
         plugins: [
             new CleanWebpackPlugin(),
             new MiniCssExtractPlugin({ filename: isDev ? '[name].css' : '[name].[contenthash].css' }),
-            new WebpackManifestPlugin(),
+            new WebpackManifestPlugin({ generate: manifestGenerate }),
             ...(isDev ? [new webpack.HotModuleReplacementPlugin({}), new ReactRefreshWebpackPlugin()] : []),
         ],
         ...(isProd && {
@@ -73,6 +73,22 @@ function createConfig(_, { mode = 'production' }) {
             },
         }),
     };
+}
+
+function manifestGenerate(_seed, files, _entries) {
+    const manifest = { arrCss: [], arrJs: [], arrAssets: [] };
+
+    for (const file of files) {
+        if (file.path.endsWith('.js')) {
+            manifest.arrJs.push(file.path);
+        } else if (file.path.endsWith('.css')) {
+            manifest.arrCss.push(file.path);
+        } else {
+            manifest.arrAssets.push(file.path);
+        }
+    }
+
+    return manifest;
 }
 
 module.exports = createConfig;

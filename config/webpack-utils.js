@@ -51,6 +51,10 @@ function getRules(type, mode = 'production') {
             ],
         },
         {
+            test: /\.svg$/i,
+            use: ['@svgr/webpack'],
+        },
+        {
             test: /\.(png|jpg|jpeg|gif|ico)$/i,
             use: [
                 {

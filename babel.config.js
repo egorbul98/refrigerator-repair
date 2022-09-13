@@ -6,5 +6,6 @@ module.exports = {
         '@babel/transform-arrow-functions',
         '@babel/proposal-object-rest-spread',
         '@babel/proposal-class-properties',
+        'inline-react-svg',
     ],
 };

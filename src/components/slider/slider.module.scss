@@ -40,10 +40,11 @@
     }
 
     .icon{
-        font-weight: bold;
         display: flex;
         align-items: center;
         justify-content: center;
         text-align: center;
+        stroke: white;
+        stroke-width: 0.3px;
     }
 }

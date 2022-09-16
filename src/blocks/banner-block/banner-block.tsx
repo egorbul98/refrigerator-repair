@@ -5,6 +5,8 @@ import { Button } from '../../components/button/button';
 import cn from 'classnames';
 import { MASTER_PHONE } from '../../components/feedback-form/constants';
 
+import Call from '@mui/icons-material/CallOutlined';
+
 interface Props {
     onClickButton: () => void;
 }
@@ -15,7 +17,7 @@ export const BannerBlock = ({ onClickButton }: Props) => {
             <div className={styles.container}>
                 <div className={styles.left}>
                     <div className={cn(styles.icon)}>
-                        <span className="material-symbols-outlined">call</span>
+                        <Call />
                     </div>
                     <div className={styles.text}>
                         <h3 className={styles.title}>Вызовите мастера и получите скидку 20%</h3>

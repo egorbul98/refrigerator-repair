@@ -1,13 +1,12 @@
 import React from 'react';
 import styles from './nav-links.module.scss';
-import cn from 'classnames';
 import { Link } from '../link/link';
 import { scrollIntoView } from '../../utils/scroll-into-view';
 
 export interface NavLinkProp {
     label: string;
     href: string;
-    icon: string;
+    icon: React.ReactNode;
 }
 
 export const NavigationLinks = ({ items, onClickItem }: { items: NavLinkProp[]; onClickItem: () => void }) => {
@@ -29,7 +28,7 @@ export const NavigationLinks = ({ items, onClickItem }: { items: NavLinkProp[]; 
                             handleClickItem(item.href);
                         }}
                     >
-                        <div className={cn('material-symbols-outlined', styles.icon)}>{item.icon}</div>
+                        <div className={styles.icon}>{item.icon}</div>
                         <div className={styles.label}>{item.label}</div>
                     </Link>
                 );

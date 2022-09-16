@@ -62,7 +62,7 @@ function createConfig(_, { mode = 'production' }) {
             ],
         },
         plugins: [
-            new CleanWebpackPlugin(),
+            ...(isProd ? [new CleanWebpackPlugin()] : []),
             new MiniCssExtractPlugin({ filename: isDev ? '[name].css' : '[name].[contenthash].css' }),
             new WebpackManifestPlugin({ generate: manifestGenerate }),
             ...(isDev ? [new webpack.HotModuleReplacementPlugin({}), new ReactRefreshWebpackPlugin()] : []),

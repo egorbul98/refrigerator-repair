@@ -56,8 +56,10 @@
             background: $color-blue-light-hover;
 
             .icon{
-                font-size: 38px;
-                transition: $transition;
+                svg{
+                    transition: $transition;
+                    font-size: 38px;
+                }
             }
         }
     }
@@ -81,15 +83,23 @@
         }
     }
 
-    .icon{
-        font-size: 32px;
+    
+}
 
-        @include screen-s-and-lesser{
-            margin-right: 16px;
-        }
 
-        @media screen and (max-width: 450px) {
-            display: none;
-        }
+.icon{
+    display: flex;
+
+    @include screen-s-and-lesser{
+        margin-right: 16px;
     }
+
+    @media screen and (max-width: 450px) {
+        display: none;
+    }
+
+    svg{
+        font-size: 32px;
+    }
+    
 }

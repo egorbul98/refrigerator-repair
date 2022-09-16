@@ -4,6 +4,9 @@ import './swiper.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import cn from 'classnames';
 
+import ArrowBackIosNewOutlined from '@mui/icons-material/ArrowBackIosNewOutlined';
+import ArrowForwardIosOutlined from '@mui/icons-material/ArrowForwardIosOutlined';
+
 interface Props {
     slides: React.ReactNode[];
     swiperProps?: any;
@@ -70,11 +73,15 @@ const Navigation = ({ next, prev }: NavigationProps) => {
     return (
         <div className={styles.navigation}>
             <button className={styles.navigationButton} onClick={prev}>
-                <span className={cn('material-symbols-outlined', styles.icon)}>arrow_back_ios_new</span>
+                <span className={styles.icon}>
+                    <ArrowBackIosNewOutlined />
+                </span>
             </button>
 
             <button className={styles.navigationButton} onClick={next}>
-                <span className={cn('material-symbols-outlined', styles.icon)}>arrow_forward_ios</span>
+                <span className={styles.icon}>
+                    <ArrowForwardIosOutlined />
+                </span>
             </button>
         </div>
     );

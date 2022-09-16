@@ -3,6 +3,8 @@ import styles from './reviews-block.module.scss';
 import { BlockLayout } from '../../components/block-layout/block-layout';
 import { Slider } from '../../components/slider/slider';
 
+import Star from '@mui/icons-material/Star';
+
 const listData = [
     {
         name: 'Борис',
@@ -78,9 +80,7 @@ const Stars = ({ num }: { num: number }) => {
     return (
         <div>
             {Array.from(Array(num).keys()).map((item) => (
-                <span className="material-symbols-outlined" key={item}>
-                    star
-                </span>
+                <Star key={item} />
             ))}
         </div>
     );

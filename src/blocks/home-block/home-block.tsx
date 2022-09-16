@@ -1,6 +1,5 @@
 import React from 'react';
 import { Container } from '../../components/container/container';
-import cn from 'classnames';
 import styles from './home-block.module.scss';
 import backgroundImage from '../../assets/images/header-background.jpg';
 import { useFeedbackFormInputs } from '../../components/feedback-form/feedback-form';
@@ -14,18 +13,22 @@ import {
 } from '../../components/feedback-form/constants';
 import { callMaster } from '../../api/call-master';
 
+import LocalShipping from '@mui/icons-material/LocalShippingOutlined';
+import BuildCircleOutlined from '@mui/icons-material/BuildCircleOutlined';
+import Handyman from '@mui/icons-material/HandymanOutlined';
+
 const listData = [
     {
         label: 'Срочный выезд в день обращения',
-        icon: 'local_shipping',
+        icon: <LocalShipping />,
     },
     {
         label: 'Бесплатная диагностика (при согласии на ремонт)',
-        icon: 'build_circle',
+        icon: <BuildCircleOutlined />,
     },
     {
         label: 'Оригинальные запчасти в наличии',
-        icon: 'handyman',
+        icon: <Handyman />,
     },
 ];
 
@@ -57,7 +60,7 @@ export const HomeBlock = ({ openSuccessModal }: { openSuccessModal?: () => void 
                     {listData.map((item) => {
                         return (
                             <li key={item.label} className={styles.item}>
-                                <span className={cn('material-symbols-outlined', styles.icon)}>{item.icon}</span>
+                                <span className={styles.icon}>{item.icon}</span>
                                 <span>{item.label}</span>
                             </li>
                         );
@@ -86,7 +89,7 @@ const Form = ({ onSubmit: _onSubmit }: Props) => {
             <div className={styles.formDesciption}>{FEEDBACK_FORM_DESCRIPTION}</div>
             <div className={styles.form}>
                 <div className={styles.field}>
-                    <TextInput placeholder="Ваше имя" value={name} onChange={onChangeName} />
+                    <TextInput placeholder="Ваше имя" value={name} onChange={onChangeName} maxLength={64} />
                 </div>
                 <div className={styles.field}>
                     <PhoneInput placeholder="Ваш телефон" value={phone} onChange={onChangePhone} />

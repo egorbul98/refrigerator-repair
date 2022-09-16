@@ -53,10 +53,6 @@ function createConfig(_, { mode = 'production' }) {
                         },
                     },
                 },
-                // {
-                //     test: /\.js?$/,
-                //     loader: 'babel-loader',
-                // },
             ],
         },
         plugins: [new MiniCssExtractPlugin({ filename: isDev ? '[name].css' : '[name].[contenthash].css' })],

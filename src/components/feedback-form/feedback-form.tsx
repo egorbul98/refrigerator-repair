@@ -17,7 +17,7 @@ export const FeedbackForm = ({ onSubmit: _onSubmit }: Props) => {
     return (
         <>
             <div className={styles.field}>
-                <TextInput placeholder="Ваше имя" value={name} onChange={onChangeName} />
+                <TextInput placeholder="Ваше имя" value={name} onChange={onChangeName} maxLength={64} />
             </div>
             <div className={styles.field}>
                 <PhoneInput placeholder="Ваш телефон" value={phone} onChange={onChangePhone} />

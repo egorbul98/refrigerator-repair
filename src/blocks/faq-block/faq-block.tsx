@@ -4,6 +4,8 @@ import { BlockLayout } from '../../components/block-layout/block-layout';
 import cn from 'classnames';
 import useCollapse from 'react-collapsed';
 
+import ExpandLessOutlined from '@mui/icons-material/ExpandLessOutlined';
+
 const listData = [
     {
         title: 'Как узнать стоимость ремонта?',
@@ -63,7 +65,7 @@ const FaqItem = ({ content, title }: FaqItemProps) => {
             <button {...getToggleProps()} className={styles.title}>
                 {isExpanded ? '' : ''}
                 <span>{title}</span>
-                <span className={cn(styles.icon, 'material-symbols-outlined')}>expand_less</span>
+                <ExpandLessOutlined className={styles.icon} />
             </button>
             <div {...getCollapseProps()}>
                 <div className={styles.content}>{content}</div>

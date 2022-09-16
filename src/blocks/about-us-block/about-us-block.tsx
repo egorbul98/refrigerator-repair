@@ -1,36 +1,42 @@
 import React from 'react';
 import styles from './about-us-block.module.scss';
 import { BlockLayout } from '../../components/block-layout/block-layout';
-import cn from 'classnames';
+
+import LocalShipping from '@mui/icons-material/LocalShippingOutlined';
+import Timer from '@mui/icons-material/TimerOutlined';
+import Inventory from '@mui/icons-material/InventoryOutlined';
+import Handyman from '@mui/icons-material/HandymanOutlined';
+import DoneOutline from '@mui/icons-material/DoneOutline';
+import Group from '@mui/icons-material/GroupOutlined';
 
 const listData = [
     {
         title: 'Бесплатный выезд и диагностика',
         description: 'Мастер проведет бесплатную диагностику холодильника на дому и озвучит вам причину поломки.',
-        icon: 'local_shipping',
+        icon: <LocalShipping />,
     },
     {
         title: 'Быстрое решение проблем!',
         description: 'Принимаем заявки круглосуточно. Устраним поломку в течение 24 часов.',
-        icon: 'timer',
+        icon: <Timer />,
     },
     {
         title: 'Гарантия до 2 лет',
         description: 'Мы предоставляем официальную гарантию на услуги и запчасти сроком до 2 лет.',
-        icon: 'Inventory',
+        icon: <Inventory />,
     },
     {
         title: 'Мастера с опытом 10+ лет',
         description: `Все специалисты имеют профильное образование и большой опыт работы. Компания несет ответственность за сотрудников.`,
-        icon: 'Handyman',
+        icon: <Handyman />,
     },
     {
         title: 'Оригинальные запчасти, сертифицированные производителями',
-        icon: 'Done_Outline',
+        icon: <DoneOutline />,
     },
     {
         title: `60 % клиентов, которые приходят к нам в первый раз - узнают о ПрофХолоде через советы знакомых.`,
-        icon: 'Group',
+        icon: <Group />,
     },
 ];
 
@@ -42,7 +48,7 @@ export const AboutUsBlock = () => {
                     return (
                         <div key={i} className={styles.item}>
                             <div className={styles.card}>
-                                <div className={cn('material-symbols-outlined', styles.icon)}>{item.icon}</div>
+                                <div className={styles.icon}>{item.icon}</div>
                                 <div className={styles.title}>{item.title}</div>
                                 {item.description && <div className={styles.description}>{item.description}</div>}
                             </div>

@@ -80,7 +80,11 @@ function manifestGenerate(_seed, files, _entries) {
 
     for (const file of files) {
         if (file.path.endsWith('.js')) {
-            manifest.arrJs.push(file.path);
+            if (file.path.includes('client')) {
+                manifest.arrJs.push({ src: file.path, type: 'defer' });
+            } else {
+                manifest.arrJs.push({ src: file.path, type: 'async' });
+            }
         } else if (file.path.endsWith('.css')) {
             manifest.arrCss.push(file.path);
         } else {

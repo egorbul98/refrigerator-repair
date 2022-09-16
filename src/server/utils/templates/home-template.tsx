@@ -8,7 +8,7 @@ export const HomeTemplate = ({
     content,
 }: {
     cssPaths: string[];
-    jsPaths: string[];
+    jsPaths: { src: string; type: 'defer' | 'async' }[];
     content: React.ReactNode;
 }) => {
     const mainHtml = renderToString(
@@ -31,8 +31,8 @@ export const HomeTemplate = ({
             </head>
             <body>
                 <div id="root">{content}</div>
-                {jsPaths.map((item) => (
-                    <script key={item} defer src={item} />
+                {jsPaths.map(({ src, type }) => (
+                    <script key={src} src={src} {...(type === 'defer' ? { defer: true } : { async: true })} />
                 ))}
             </body>
         </html>,

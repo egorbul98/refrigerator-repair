@@ -21,7 +21,7 @@ function useMiddlewares(app: Application) {
 
 interface Manifest {
     arrCss: string[];
-    arrJs: string[];
+    arrJs: { src: string; type: 'defer' | 'async' }[];
     arrAssets: string[];
 }
 

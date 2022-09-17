@@ -7,10 +7,11 @@ import { sendEmail } from './utils/send-email';
 import bodyParser from 'body-parser';
 import { env } from './config';
 import { HomeTemplate } from './utils/templates/home-template';
+import expressStaticGzip from 'express-static-gzip';
+
 const isDev = process.env.MODE === 'development';
 
 function useMiddlewares(app: Application) {
-    app.use(express.static('dist'));
     app.use(
         bodyParser.urlencoded({
             extended: true,
@@ -42,6 +43,8 @@ export async function createApp() {
             }),
         );
     });
+
+    app.use(expressStaticGzip('dist', { enableBrotli: true, orderPreference: ['br'] }));
 
     app.post('/api/email/send', async (req, res) => {
         await sendEmail(req.body);

@@ -7,6 +7,9 @@ const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin'
 const { getRules } = require('./webpack-utils');
 const webpack = require('webpack');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 function createConfig(_, { mode = 'production' }) {
     const root = path.resolve(__dirname, '../');
@@ -62,14 +65,27 @@ function createConfig(_, { mode = 'production' }) {
             ],
         },
         plugins: [
-            ...(isProd ? [new CleanWebpackPlugin()] : []),
+            ...(isProd
+                ? [
+                      new CleanWebpackPlugin(),
+                      new webpack.NoEmitOnErrorsPlugin(),
+                      new CompressionPlugin({ test: /\.(js|css)$/ }),
+                      new CompressionPlugin({ test: /\.(js|css)$/, algorithm: 'brotliCompress' }),
+                  ]
+                : []),
             new MiniCssExtractPlugin({ filename: isDev ? '[name].css' : '[name].[contenthash].css' }),
             new WebpackManifestPlugin({ generate: manifestGenerate }),
             ...(isDev ? [new webpack.HotModuleReplacementPlugin({}), new ReactRefreshWebpackPlugin()] : []),
+            // new BundleAnalyzerPlugin(),
         ],
         ...(isProd && {
             optimization: {
-                minimizer: [`...`, new CssMinimizerPlugin()],
+                minimize: true,
+                minimizer: [`...`, new CssMinimizerPlugin(), new TerserPlugin()],
+                splitChunks: {
+                    // include all types of chunks
+                    chunks: 'all',
+                },
             },
         }),
     };

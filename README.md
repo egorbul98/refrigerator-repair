@@ -1,3 +1,5 @@
+http://prof-xolod.ru/
+
 ## Разработка
 1. yarn
 2. cp .env.example .env
@@ -8,6 +10,9 @@
     2.1. yarn start:react-scripts
 
 3. open http://localhost:3000
+
+## прод
+1. yarn start:prod
 
 ## скрипты автогенерации
 в package.json:

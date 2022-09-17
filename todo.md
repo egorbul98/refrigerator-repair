@@ -1,6 +1,3 @@
-1. minify css
-2. import maps
-3. max lentgh name
-4. map lazy
-
+http://prof-xolod.ru/
+info-profxolod@mail.ru
 yarn && yarn build && pm2 restart server

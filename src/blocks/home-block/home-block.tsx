@@ -2,6 +2,7 @@ import React from 'react';
 import { Container } from '../../components/container/container';
 import styles from './home-block.module.scss';
 import backgroundImage from '../../assets/images/header-background.jpg';
+import backgroundImageMobile from '../../assets/images/header-background-mobile.jpg';
 import { useFeedbackFormInputs } from '../../components/feedback-form/feedback-form';
 import { PhoneInput } from '../../components/inputs/phone-input/phone-input';
 import { TextInput } from '../../components/inputs/text-input/text-input';
@@ -46,7 +47,10 @@ export const HomeBlock = ({ openSuccessModal }: { openSuccessModal?: () => void 
     return (
         <section className={styles.container}>
             <div className={styles.backgroundImage}>
-                <img src={backgroundImage} alt="" />
+                <picture>
+                    <source media="(max-width: 767px)" srcSet={backgroundImageMobile} />
+                    <img src={backgroundImage} alt="" />
+                </picture>
             </div>
             <Container className={styles.innerContainer}>
                 <div className={styles.top}>

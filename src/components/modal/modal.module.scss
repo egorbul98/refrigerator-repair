@@ -42,6 +42,10 @@
     background: #fff;
     padding: 48px;
     transition: all 0.3s;
+
+    @media screen and (max-width: 380px) {
+        padding: 40px 24px;
+    }
 }
 
 .iconClose{

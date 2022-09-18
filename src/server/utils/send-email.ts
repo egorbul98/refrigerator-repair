@@ -18,12 +18,12 @@ export async function sendEmail({ name, phone }: { phone?: string; name?: string
         },
         {
             to: [MASTER_EMAIL],
-            from: `Холодильник Отремонтирович <${env.EMAIL_FROM_USER}>`,
+            from: `Сервисный Центр <${env.EMAIL_FROM_USER}>`,
         },
     );
 
     const info = await transporter.sendMail({
-        subject: '...',
+        subject: 'Заказы',
         html: EmailTemplate({ name, phone }),
     });
 

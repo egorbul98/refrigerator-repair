@@ -4,25 +4,33 @@
    display: block;
    visibility: hidden;
    position: relative;
-   top: -124px;
+   top: -$header-height;
 
    @include screen-m-and-lesser{
-      top: -100px;
+      top: -$header-height-m-and-lesser;
    }
 
    @include screen-s-and-lesser{
-      top: -80px;
+      top: -$header-height-s-and-lesser;
+   }
+
+   @include screen-xxs{
+      top: -$header-height-xxs;
    }
 
    &.offset{
-      top: -132px;
+      top: calc(0px - $header-height - 8px);
 
       @include screen-m-and-lesser{
-         top: -108px;
+         top: calc(0px - $header-height-m-and-lesser - 8px);
       }
    
       @include screen-s-and-lesser{
-         top: -88px;
+         top: calc(0px - $header-height-s-and-lesser - 8px);
+      }
+   
+      @include screen-xxs{
+         top: calc(0px - $header-height-xxs - 8px);
       }
    }
 }

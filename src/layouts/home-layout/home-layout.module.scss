@@ -20,9 +20,9 @@ $sidebar-width-m: 122px;
     @include screen-s-and-lesser{
         position: fixed;
         right: 100%;
-        top: 80px;
+        top: $header-height-s-and-lesser;
         width: 100%;
-        height: calc(100vh - 80px);
+        height: calc(100vh - $header-height-s-and-lesser);
         transition: all 0.3s;
         overflow: auto;
         padding-bottom: 40px;
@@ -30,6 +30,11 @@ $sidebar-width-m: 122px;
         &.openMenu{
             right: 0;
         }
+    }
+
+    @include screen-xxs{
+        top: $header-height-xxs;
+        height: calc(100vh - $header-height-xxs);
     }
 }
 

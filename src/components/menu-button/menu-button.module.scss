@@ -3,7 +3,7 @@
 .menuButton{
     background: transparent;
     border: none;
-    height: 80px;
+    height: $header-height-s-and-lesser;
     padding-left: 32px;
     padding-right: 32px;
     margin-left: -32px;
@@ -16,6 +16,13 @@
         margin-left: -16px;
     }
 
+    @include screen-xxs{
+        height: $header-height-xxs;
+        padding-left: 12px;
+        padding-right: 12px;
+        margin-left: -12px;
+    }
+
     &:hover{
         color: $color-blue;
     }
@@ -24,6 +31,12 @@
         font-size: 32px;
         font-weight: bold;
         line-height: 1;
+
+        @media screen and (max-width: 590px) {
+            svg{
+                margin-bottom: -2px;
+            }
+        }
     }
 
 }

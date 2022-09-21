@@ -1,7 +1,7 @@
 @import "../../styles/_includes.scss";
 
 .header{
-    height: 124px;
+    height: $header-height;
     border-bottom: 1px solid $color-blue-light-hover;
     position: sticky;
     top: 0;
@@ -10,11 +10,15 @@
     box-shadow: $box-shadow;
 
     @include screen-m-and-lesser{
-        height: 100px;
+        height: $header-height-m-and-lesser;
     }
 
     @include screen-s-and-lesser{
-        height: 80px;
+        height: $header-height-s-and-lesser;
+    }
+
+    @include screen-xxs{
+        height: $header-height-xxs;
     }
 }
 
@@ -23,6 +27,11 @@
     align-items: center;
     justify-content: space-between;
     height: 100%;
+
+    @include screen-xxs{
+        padding-left: 12px;
+        padding-right: 12px;
+    }
 }
 
 .leftBlock{
@@ -31,7 +40,7 @@
 }
 
 .logo{
-    @media screen and (max-width: 450px) {
+    @media screen and (max-width: 590px) {
         display: none;
     }
 }
@@ -45,6 +54,33 @@
 
     @media screen and (max-width: 710px){
         display: none;
+    }
+}
+
+.phone{
+    display: none;
+    @include text-16;
+    margin-left: 16px;
+    margin-right: 16px;
+
+    @media screen and (max-width: 710px){
+        display: block;
+    }
+
+    @media screen and (max-width: 590px) {
+        margin-left: 0;
+        margin-right: 4px;
+    }
+
+    @include screen-xxs{
+        @include text-14;
+    }
+}
+
+.buttonConsult button{
+    @include screen-xxs{
+        @include text-14;
+        padding: 10px;
     }
 }
 

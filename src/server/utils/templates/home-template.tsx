@@ -1,6 +1,7 @@
 import React from 'react';
 import favicon from '../../../assets/favicon.ico';
 import { renderToString } from 'react-dom/server';
+import { MASTER_EMAIL, MASTER_PHONE } from '../../../components/feedback-form/constants';
 
 export const HomeTemplate = ({
     cssPaths,
@@ -17,7 +18,11 @@ export const HomeTemplate = ({
                 <meta charSet="utf-8" />
                 <link rel="icon" href={favicon} />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
-                <title>ПрофХолод</title>
+                <title>Ремонт холодильников в Москве! Гарантия 2 года на любые работа. Выезд в день обращения</title>
+                <meta
+                    name="description"
+                    content="Ремонт холодильников. срочный выезд в день обращения; бесплатная диагностика; оригинальные запчасти в наличии"
+                />
                 <link rel="apple-touch-icon" href={favicon} />
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
@@ -52,6 +57,16 @@ export const HomeTemplate = ({
                 />
             </head>
             <body>
+                <div itemScope itemType="http://schema.org/Organization">
+                    <meta itemProp="name" content="ПрофХолод" />
+                    <meta itemProp="telephone" content={MASTER_PHONE} />
+                    <meta itemProp="email" content={MASTER_EMAIL} />
+
+                    <div itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
+                        <meta itemProp="streetAddress" content="ул. Народного Ополчения, д. 34" />
+                        <meta itemProp="addressLocality" content="Москва,  Россия" />
+                    </div>
+                </div>
                 <div id="root">{content}</div>
                 {jsPaths.map(({ src, type }) => (
                     <script key={src} src={src} {...(type === 'defer' ? { defer: true } : { async: true })} />

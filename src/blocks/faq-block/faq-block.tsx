@@ -40,7 +40,7 @@ const listData = [
 export const FaqBlock = () => {
     return (
         <BlockLayout title="Часто задаваемые вопросы" id="faq" paddingBottom paddingTop>
-            <div className={styles.list}>
+            <div className={styles.list} itemScope itemType="http://schema.org/FAQPage">
                 {listData.map((item, i) => {
                     return (
                         <div key={i} className={styles.item}>
@@ -58,17 +58,40 @@ interface FaqItemProps {
     content: string;
 }
 
+<div itemScope itemType="http://schema.org/FAQPage">
+    <div itemProp="mainEntity" itemScope itemType="http://schema.org/Question">
+        <div itemProp="name">Это вопрос</div>
+        <div itemScope itemProp="acceptedAnswer" itemType="http://schema.org/Answer">
+            <div itemProp="text">Здесь размещается ответ на указанный вопрос</div>
+        </div>
+    </div>
+
+    <div itemProp="mainEntity" itemScope itemType="http://schema.org/Question">
+        <div itemProp="name">Это вопрос</div>
+        <div itemScope itemProp="acceptedAnswer" itemType="http://schema.org/Answer">
+            <div itemProp="text">Здесь размещается ответ на указанный вопрос</div>
+        </div>
+    </div>
+</div>;
+
 const FaqItem = ({ content, title }: FaqItemProps) => {
     const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
     return (
-        <div className={cn(styles.faqItem, { [styles.expaned]: isExpanded })}>
+        <div
+            className={cn(styles.faqItem, { [styles.expaned]: isExpanded })}
+            itemProp="mainEntity"
+            itemScope
+            itemType="http://schema.org/Question"
+        >
             <button {...getToggleProps()} className={styles.title}>
                 {isExpanded ? '' : ''}
-                <span>{title}</span>
+                <span itemProp="name">{title}</span>
                 <ExpandLessOutlined className={styles.icon} />
             </button>
-            <div {...getCollapseProps()}>
-                <div className={styles.content}>{content}</div>
+            <div {...getCollapseProps()} itemScope itemProp="acceptedAnswer" itemType="http://schema.org/Answer">
+                <div className={styles.content} itemProp="text">
+                    {content}
+                </div>
             </div>
         </div>
     );

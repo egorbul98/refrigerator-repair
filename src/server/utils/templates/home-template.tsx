@@ -63,7 +63,6 @@ export const HomeTemplate = ({
                     <meta itemProp="email" content={MASTER_EMAIL} />
 
                     <div itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
-                        <meta itemProp="streetAddress" content="ул. Народного Ополчения, д. 34" />
                         <meta itemProp="addressLocality" content="Москва,  Россия" />
                     </div>
                 </div>

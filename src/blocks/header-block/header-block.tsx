@@ -5,8 +5,6 @@ import { Button } from '../../components/button/button';
 import { MenuButton } from '../../components/menu-button/menu-button';
 import { Contacts } from '../../components/contacts/contacts';
 import { Logo } from '../../components/logo/logo';
-import { MASTER_PHONE } from '../../components/feedback-form/constants';
-import { Link } from '../../components/link/link';
 
 interface Props {
     onClickConsultation: () => void;
@@ -25,9 +23,9 @@ export const HeaderBlock = ({ onClickConsultation, openMenu, toggleMenuHandler }
                         <Logo />
                     </div>
 
-                    <Link className={styles.phone} href={`tel:${MASTER_PHONE}`}>
-                        {MASTER_PHONE}
-                    </Link>
+                    <div className={styles.contactsMobile}>
+                        <Contacts variant="s" />
+                    </div>
 
                     <div className={styles.contacts}>
                         <Contacts />

@@ -57,9 +57,8 @@
     }
 }
 
-.phone{
+.contactsMobile{
     display: none;
-    @include text-16;
     margin-left: 16px;
     margin-right: 16px;
 
@@ -70,10 +69,6 @@
     @media screen and (max-width: 590px) {
         margin-left: 0;
         margin-right: 4px;
-    }
-
-    @include screen-xxs{
-        @include text-14;
     }
 }
 

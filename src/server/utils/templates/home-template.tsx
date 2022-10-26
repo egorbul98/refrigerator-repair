@@ -18,7 +18,7 @@ export const HomeTemplate = ({
                 <meta charSet="utf-8" />
                 <link rel="icon" href={favicon} />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
-                <title>Ремонт холодильников в Москве! Гарантия 2 года на любые работа. Выезд в день обращения</title>
+                <title>Ремонт холодильников в Москве! Гарантия 2 года на любые работы. Выезд в день обращения</title>
                 <meta
                     name="description"
                     content="Ремонт холодильников. срочный выезд в день обращения; бесплатная диагностика; оригинальные запчасти в наличии"

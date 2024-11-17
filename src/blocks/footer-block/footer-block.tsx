@@ -63,7 +63,7 @@ export const FooterBlock = ({ navLinks }: Props) => {
                         <div>{<VisaIcon />}</div>
                     </div>
 
-                    <div className={styles.copyright}>© 2001-2022 ПрофХолод, ремонт холодильников</div>
+                    <div className={styles.copyright}>© 2001-2025 ПрофХолод, ремонт холодильников</div>
                 </div>
             </BlockLayout>
         </footer>
